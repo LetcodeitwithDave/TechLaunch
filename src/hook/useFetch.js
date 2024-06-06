@@ -5,7 +5,7 @@ import { useInputContext } from "../authcontext/inputContext";
 
 
 const useFetch = () => {
-    const { searchInput } = useInputContext()
+    const { searchInput } = useInputContext() //data gotten from the input component
 
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +22,7 @@ const useFetch = () => {
         },
         params: {
             query: searchInput || 'Django Developer',
-            // query: `${searchInput}`,
+
 
             num_pages: '1'
         },
