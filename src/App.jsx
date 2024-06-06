@@ -1,21 +1,22 @@
 // App.js
 import React from 'react';
-import { InputProvider } from './authcontext/inputContext';
-import Header from './sections/Header';
-import Jobsection from './sections/Jobsection';
+import { Main } from './sections';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { LandingHeader } from './landingpage/components';
 
 function App() {
   return (
-    <InputProvider>
-      <main>
-        <section>
-          <Header />
-        </section>
-        <section>
-          <Jobsection />
-        </section>
-      </main>
-    </InputProvider>
+    <div>
+
+      <Router>
+        <Routes>
+          <Route   path='/home' element={<Main />} />
+          <Route   path='/' element={<LandingHeader />} />
+        </Routes>
+      </Router>
+
+    </div>
+    
   );
 }
 
