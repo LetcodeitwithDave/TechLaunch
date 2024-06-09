@@ -37,8 +37,8 @@ function LandingHeader() {
       </header> */}
 
       <header>
-        <nav className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  flex justify-between items-center max-container ">
-          <div className=" flex ">
+        <nav className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  flex justify-between items-center max-container ">
+          <div className="flex">
             <img
               src={paperPlane1}
               height={52}
@@ -46,7 +46,7 @@ function LandingHeader() {
               className=" mt-5"
               // className="px-0  h-20 w-[120px] md:h-[90px] md:w-[120px] bg-transparent"
             />
-            <h1 className=" text-black font-Roboto font-bold  text-2xl mt-6">
+            <h1 className=" text-black font-robotoBold  text-2xl mt-6">
               TechLaunch
             </h1>
           </div>
@@ -54,7 +54,7 @@ function LandingHeader() {
           <div className="">
             {/* modification for the menu */}
             {/* flex to col in smaller screens and row on larger */}
-            <ul className="hidden sm:flex flex-row justify-center items-center gap-3 font-Roboto">
+            <ul className="hidden sm:flex flex-row justify-center items-center gap-3 font-robotoRegular">
               {navLinks.map((item) => (
                 <li key={item.label}>
                   <a
@@ -72,11 +72,11 @@ function LandingHeader() {
             </ul>
           </div>
           <div className="flex space-x-3 ">
-            <div className="flex gap-6  text-black font-Roboto">
-              <a className=" mt-1 text-sm " href="#">
+            <div className="flex gap-6  text-black font-robotoRegular">
+              <a className=" mt-[6px] text-sm " href="#">
                 Login
               </a>
-              <div className=" border-customColor1 border  rounded-md px-2 py-0">
+              <div className=" border-customColor1 border-[1.5px]  rounded-md px-2 py-[3.0px]">
                 <a href="#">Sign-up</a>
               </div>
             </div>
@@ -97,7 +97,7 @@ function LandingHeader() {
             <div className=" absolute sm:hidden right-0 top-0 h-screen w-2/3 bg-green-800 text-white z-10 py-6 px-2 transform translate-x-0 transition-transform duration-300">
               {/* <button className=" focus:ring-2 focus:out focus:outline-none  focus:ring-green-700 rounded transition duration-200 my-2 text-white h-[33px] text-4xl sm:hidden mb-2">
                         <IonIcon icon={close} />
-                      </button> */}
+              </button> */}
 
               {navLinks.map((item) => (
                 <a href={item.href} key={item.label}>
