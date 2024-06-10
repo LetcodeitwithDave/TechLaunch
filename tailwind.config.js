@@ -22,7 +22,8 @@ module.exports = {
         heroBackground: '#F2F2F2',
         textColor: '#333333',
         subheading: '#666666',
-        buttonBackground: '#007BFF'
+        buttonBackground: '#007BFF',
+        OfferSectionBackground: '#EFEFEF',
       },
 
       textDecorationColor: {
