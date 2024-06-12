@@ -4,16 +4,23 @@ import { remoteImgage, internshipImage, partTimeImage } from '../../assets/landi
 function OfferSection() {
   return (
     <div>
-        <h1 className=' flex justify-center py-9  text-4xl font-montserratBold text-textColor mb-16'> 
-            We Offer Best Services
-        </h1>
+        <p className=' flex justify-center font-montserratRegular pt-16 text-textColor'>Choose Me</p>
+        <div className='flex flex-col justify-center pb-14 pt-3  text-4xl font-montserratSemibold  mb-16'>
+
+            <h1 className=' flex justify-center  '> 
+                Why TechLaunch Is Right 
+            </h1>
+            <h1 className=' flex justify-center'>For You?</h1>
+
+        </div>
+        {/* We Offer Best Services */}
         <div  className='  px-4 flex justify-evenly'>
             <div className=' relative'>
                 <img 
                     src={remoteImgage}
                     className=' w-[92px] h-[93px] absolute -top-14 left-10'
                 />
-                <div className=' border  border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72'>
+                <div className=' border  border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72 shadow-xl'>
                     
                     <h1 className=' font-montserratBold text-textColor text-2xl'>Remote Work</h1>
 
@@ -28,7 +35,7 @@ function OfferSection() {
                     src={internshipImage}
                     className=' w-[92px] h-[93px] absolute -top-14 left-10'
                 />
-                <div className=' border border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72'>
+                <div className=' border border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72 shadow-xl'>
                     
                     <h1 className=' font-montserratBold text-textColor text-2xl'>Intership Opportunities</h1>
 
@@ -43,7 +50,7 @@ function OfferSection() {
                     src={partTimeImage}
                     className=' w-[92px] h-[93px] absolute -top-14 left-10'
                 />
-                <div className=' border border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72'>
+                <div className=' border border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72 shadow-xl'>
                     
                     <h1 className=' font-montserratBold text-textColor text-2xl'>Part-Time Jobs</h1>
 
