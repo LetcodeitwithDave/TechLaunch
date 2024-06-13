@@ -7,11 +7,11 @@ function LandingPage() {
       <section className=" bg-white">
         <LandingHeader />
       </section>
-      <section className=" bg-heroBackground">
+      <section className="  bg-heroBackground">
         <LandingHero />
       </section>
 
-      <section  className="mt-11 mb-14">
+      <section  className=" mt-11 pb-16">
         <OfferSection />
       </section>
 
