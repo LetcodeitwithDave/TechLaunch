@@ -4,7 +4,7 @@ import { remoteImgage, internshipImage, partTimeImage } from '../../assets/landi
 function OfferSection() {
   return (
     <div>
-        <p className=' flex justify-center font-montserratRegular pt-16 text-textColor'>Choose Me</p>
+        <p className=' flex justify-center font-montserratRegular pt-16 text-textColor text-sm'>Choose Me</p>
         <div className='flex flex-col justify-center pb-14 pt-3  text-4xl font-montserratSemibold  mb-16'>
 
             <h1 className=' flex justify-center  '> 
