@@ -4,7 +4,8 @@ import getHired1 from './getHired1.png'
 import search2 from './search2.png'
 import apply1 from './apply1.png'
 import getHired4 from './getHired4.png'
-import howItWorkImage from './howitworks1.jpg'
+import getHired3 from './getHired3.png'
+import howItWorkImage from './howitworks2.jpg'
 
 
 
@@ -15,5 +16,6 @@ export{
     search2,
     apply1,
     getHired4,
+    getHired3,
     howItWorkImage
 }
