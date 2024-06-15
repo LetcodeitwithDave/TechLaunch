@@ -11,7 +11,7 @@ function FeaturedJobs() {
             <div className=' relative'>
                 <img 
                     src={companyLogo1}
-                    className=' w-[92px] h-[93px] absolute -top-14 left-10'
+                    className=' w-[92px] h-[93px] absolute -top-14 left-10 rounded-full'
                 />
                 <div className=' border  border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72'>
                     
