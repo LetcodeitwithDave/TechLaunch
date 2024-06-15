@@ -22,9 +22,9 @@ function LandingPage() {
         <HowItWorks />
       </section>
 
-      {/* <section  className="mt-11 mb-14">
+      <section  className="mt-11 mb-14">
         <FeaturedJobs />
-      </section> */}
+      </section>
     </main>
   );
 }
