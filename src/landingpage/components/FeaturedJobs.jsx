@@ -1,57 +1,213 @@
 import React from 'react'
 import { companyLogo1, companyLogo2, companyLogo3 } from '../../assets/landingpageimage'
+import { softwareWeb } from '../../assets/landingpageimage/featuredjobimage'
 
 function FeaturedJobs() {
   return (
     <div>
-        <h1 className=' flex justify-center py-9  text-4xl font-montserratBold text-textColor mb-16'> 
-            We Offer Best Services
-        </h1>
-        <div  className='  px-4 flex justify-evenly'>
+        <p className=' flex justify-center font-montserratRegular pt-16 text-textColor text-sm'>Your Dream Job</p>
+        <div className='flex flex-col justify-center pb-14 pt-3  text-5xl font-montserratSemibold  mb-16'>
+
+            <h1 className=' flex justify-center  '> 
+                Explore and Find 
+            </h1>
+            <h1 className=' flex justify-center'>your Job Here</h1>
+
+        </div>
+        <div  className='  px-9 flex justify-evenly flex-wrap  gap-4'>
             <div className=' relative'>
                 <img 
-                    src={companyLogo1}
-                    className=' w-[92px] h-[93px] absolute -top-14 left-10 rounded-full'
+                    src={softwareWeb}
+                    className=' w-[55px] h-[55px] absolute border border-red-900 top-1 left-5 rounded-full'
                 />
-                <div className=' border  border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72'>
+                <div className=' border  border-gray-300 py-14  px-5 bg-white rounded-xl w-[400px] h-[450px]'>
                     
-                    <h1 className=' font-montserratBold text-textColor text-2xl'>Remote Work</h1>
+                    <h1 className=' font-montserratBold text-textColor text-2xl pt-3'>Java Full stack Web Developer</h1>
+                    <p className=' pt-2 font-montserratRegular text-subheading text-sm '>AppLab Systems, Inc</p>
+                    <p className=' font-montserratRegular text-subheading text-sm'>Austin, TX</p>
+                    <div className="font-montserratRegular text-black  px-5 pt-5 text-sm">
+                        <ul className="list-disc space-y-1">
+                            <li>
+                                Develop and maintain web applications using JavaScript, ReactJS, NodeJS, and Express.JS.
+                            </li>
+                            <li>
+                                Test and troubleshoot REST APIs; collaborate with cross-functional teams in a dynamic environment.
+                            </li>
+                            <li>
+                                Utilize React Hooks and optionally GraphQL; contribute to multiple release cycles within an organizational code base.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className=' my-3 text-end '>
+                        <button className=' text-white bg-buttonBackground font-montserratSemibold py-2 px-2 rounded-md text-sm'>
+                            Apply Now
+                        </button>
 
-                    <p className=' font-montserratRegular py-5 text-subheading text-lg'>
-                    Discover remote work opportunities that allow you to gain experience without compromising your studies.
-                    </p>
+                    </div>
+                </div>
+            </div>
+           
+            <div className=' relative'>
+                <img 
+                    src={softwareWeb}
+                    className=' w-[55px] h-[55px] absolute border border-red-900 top-1 left-5 rounded-full'
+                />
+                <div className=' border  border-gray-300 py-14  px-5 bg-white rounded-xl w-[400px] h-[450px]'>
+                    
+                    <h1 className=' font-montserratBold text-textColor text-2xl pt-3'>Java Full stack Web Developer</h1>
+                    <p className=' pt-2 font-montserratRegular text-subheading text-sm '>AppLab Systems, Inc</p>
+                    <p className=' font-montserratRegular text-subheading text-sm'>Austin, TX</p>
+                    <div className="font-montserratRegular text-black  px-5 pt-5 text-sm">
+                        <ul className="list-disc space-y-1">
+                            <li>
+                                Develop and maintain web applications using JavaScript, ReactJS, NodeJS, and Express.JS.
+                            </li>
+                            <li>
+                                Test and troubleshoot REST APIs; collaborate with cross-functional teams in a dynamic environment.
+                            </li>
+                            <li>
+                                Utilize React Hooks and optionally GraphQL; contribute to multiple release cycles within an organizational code base.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className=' my-3 text-end '>
+                        <button className=' text-white bg-buttonBackground font-montserratSemibold py-2 px-2 rounded-md text-sm'>
+                            Apply Now
+                        </button>
+
+                    </div> 
                 </div>
             </div>
 
             <div className=' relative'>
                 <img 
-                    src={companyLogo2}
-                    className=' w-[92px] h-[93px] absolute -top-14 left-10'
+                    src={softwareWeb}
+                    className=' w-[55px] h-[55px] absolute border border-red-900 top-1 left-5 rounded-full'
                 />
-                <div className=' border border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72'>
+                <div className=' border  border-gray-300 py-14  px-5 bg-white rounded-xl w-[400px] h-[450px]'>
                     
-                    <h1 className=' font-montserratBold text-textColor text-2xl'>Intership Opportunities</h1>
+                    <h1 className=' font-montserratBold text-textColor text-2xl pt-3'>Java Full stack Web Developer</h1>
+                    <p className=' pt-2 font-montserratRegular text-subheading text-sm '>AppLab Systems, Inc</p>
+                    <p className=' font-montserratRegular text-subheading text-sm'>Austin, TX</p>
+                    <div className="font-montserratRegular text-black  px-5 pt-5 text-sm">
+                        <ul className="list-disc space-y-1">
+                            <li>
+                                Develop and maintain web applications using JavaScript, ReactJS, NodeJS, and Express.JS.
+                            </li>
+                            <li>
+                                Test and troubleshoot REST APIs; collaborate with cross-functional teams in a dynamic environment.
+                            </li>
+                            <li>
+                                Utilize React Hooks and optionally GraphQL; contribute to multiple release cycles within an organizational code base.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className=' my-3 text-end '>
+                        <button className=' text-white bg-buttonBackground font-montserratSemibold py-2 px-2 rounded-md text-sm'>
+                            Apply Now
+                        </button>
 
-                    <p className=' font-montserratRegular py-5 text-subheading text-lg'>
-                    We connect you with tech companies offering internships that fit your schedule and career goals
-                    </p>
+                    </div>
                 </div>
             </div>
 
             <div className=' relative'>
                 <img 
-                    src={companyLogo3}
-                    className=' w-[92px] h-[93px] absolute -top-14 left-10'
+                    src={softwareWeb}
+                    className=' w-[55px] h-[55px] absolute border border-red-900 top-1 left-5 rounded-full'
                 />
-                <div className=' border border-gray-300 py-14  px-10 bg-white rounded-xl w-80 h-72'>
+                <div className=' border  border-gray-300 py-14  px-5 bg-white rounded-xl w-[400px] h-[450px]'>
                     
-                    <h1 className=' font-montserratBold text-textColor text-2xl'>Part-Time Jobs</h1>
+                    <h1 className=' font-montserratBold text-textColor text-2xl pt-3'>Java Full stack Web Developer</h1>
+                    <p className=' pt-2 font-montserratRegular text-subheading text-sm '>AppLab Systems, Inc</p>
+                    <p className=' font-montserratRegular text-subheading text-sm'>Austin, TX</p>
+                    <div className="font-montserratRegular text-black  px-5 pt-5 text-sm">
+                        <ul className="list-disc space-y-1">
+                            <li>
+                                Develop and maintain web applications using JavaScript, ReactJS, NodeJS, and Express.JS.
+                            </li>
+                            <li>
+                                Test and troubleshoot REST APIs; collaborate with cross-functional teams in a dynamic environment.
+                            </li>
+                            <li>
+                                Utilize React Hooks and optionally GraphQL; contribute to multiple release cycles within an organizational code base.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className=' my-3 text-end '>
+                        <button className=' text-white bg-buttonBackground font-montserratSemibold py-2 px-2 rounded-md text-sm'>
+                            Apply Now
+                        </button>
 
-                    <p className=' font-montserratRegular py-5 text-subheading text-lg'>
-                    Find part-time job opportunities that fit your student schedule, allowing you to earn while you learn
-                    </p>
+                    </div>
                 </div>
             </div>
+
+            <div className=' relative'>
+                <img 
+                    src={softwareWeb}
+                    className=' w-[55px] h-[55px] absolute border border-red-900 top-1 left-5 rounded-full'
+                />
+                <div className=' border  border-gray-300 py-14  px-5 bg-white rounded-xl w-[400px] h-[450px]'>
+                    
+                    <h1 className=' font-montserratBold text-textColor text-2xl pt-3'>Java Full stack Web Developer</h1>
+                    <p className=' pt-2 font-montserratRegular text-subheading text-sm '>AppLab Systems, Inc</p>
+                    <p className=' font-montserratRegular text-subheading text-sm'>Austin, TX</p>
+                    <div className="font-montserratRegular text-black  px-5 pt-5 text-sm">
+                        <ul className="list-disc space-y-1">
+                            <li>
+                                Develop and maintain web applications using JavaScript, ReactJS, NodeJS, and Express.JS.
+                            </li>
+                            <li>
+                                Test and troubleshoot REST APIs; collaborate with cross-functional teams in a dynamic environment.
+                            </li>
+                            <li>
+                                Utilize React Hooks and optionally GraphQL; contribute to multiple release cycles within an organizational code base.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className=' my-3 text-end '>
+                        <button className=' text-white bg-buttonBackground font-montserratSemibold py-2 px-2 rounded-md text-sm'>
+                            Apply Now
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div className=' relative'>
+                <img 
+                    src={softwareWeb}
+                    className=' w-[55px] h-[55px] absolute border border-red-900 top-1 left-5 rounded-full'
+                />
+                <div className=' border  border-gray-300 py-14  px-5 bg-white rounded-xl w-[400px] h-[450px]'>
+                    
+                    <h1 className=' font-montserratBold text-textColor text-2xl pt-3'>Java Full stack Web Developer</h1>
+                    <p className=' pt-2 font-montserratRegular text-subheading text-sm '>AppLab Systems, Inc</p>
+                    <p className=' font-montserratRegular text-subheading text-sm'>Austin, TX</p>
+                    <div className="font-montserratRegular text-black  px-5 pt-5 text-sm">
+                        <ul className="list-disc space-y-1">
+                            <li>
+                                Develop and maintain web applications using JavaScript, ReactJS, NodeJS, and Express.JS.
+                            </li>
+                            <li>
+                                Test and troubleshoot REST APIs; collaborate with cross-functional teams in a dynamic environment.
+                            </li>
+                            <li>
+                                Utilize React Hooks and optionally GraphQL; contribute to multiple release cycles within an organizational code base.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className=' my-3 text-end '>
+                        <button className=' text-white bg-buttonBackground font-montserratSemibold py-2 px-2 rounded-md text-sm'>
+                            Apply Now
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            
 
         </div>
     </div>
