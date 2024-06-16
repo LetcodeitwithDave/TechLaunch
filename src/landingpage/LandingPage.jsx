@@ -1,5 +1,11 @@
 import React from "react";
-import { LandingHeader, LandingHero, OfferSection, FeaturedJobs, HowItWorks } from "./components";
+import {
+  LandingHeader,
+  LandingHero,
+  OfferSection,
+  FeaturedJobs,
+  HowItWorks,
+} from "./components";
 
 function LandingPage() {
   return (
@@ -11,18 +17,18 @@ function LandingPage() {
         <LandingHero />
       </section>
 
-      <section  className=" mt-11 pb-20">
+      <section className=" mt-11 pb-20">
         <OfferSection />
       </section>
       <div className=" px-12">
-        <hr/>
+        <hr />
       </div>
 
       <section className=" pt-24 mb-12">
         <HowItWorks />
       </section>
 
-      <section  className="mt-11 pb-14">
+      <section className="mt-11 pb-14 bg-pageBackground">
         <FeaturedJobs />
       </section>
     </main>
