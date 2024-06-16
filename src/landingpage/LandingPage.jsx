@@ -18,11 +18,11 @@ function LandingPage() {
         <hr/>
       </div>
 
-      <section className=" pt-24">
+      <section className=" pt-24 mb-12">
         <HowItWorks />
       </section>
 
-      <section  className="mt-11 mb-14">
+      <section  className="mt-11 pb-14">
         <FeaturedJobs />
       </section>
     </main>
