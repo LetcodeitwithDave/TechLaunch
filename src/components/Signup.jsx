@@ -1,13 +1,54 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LandingHeader } from "../landingpage/components";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const [userDetail, setUserDetail] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:8000/signup/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userDetail),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.msg || "something went wrong");
+      }
+
+      console.log("User signed up successfully", data);
+
+      navigate("/login");
+    } catch (error) {
+      console.log("Error:", error.response);
+    }
+  };
+  const handelInputChange = (e) => {
+    setUserDetail({
+      ...userDetail,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div>
       <LandingHeader />
 
-      <form>
-        <div className=" mt-8  mx-[480px] flex flex-col items-center justify-center">
+      <form onSubmit={handleSignUp}>
+        <div className=" mt-8  md:mx-[480px] flex flex-col items-center justify-center">
           {/* lock icon */}
           <div className=" border rounded-full bg-buttonBackground flex justify-center w-12 h-12 font-robotoRegular">
             {/* <FontAwesomeIcon
@@ -41,12 +82,18 @@ function SignUp() {
                 id="firstname"
                 name="firstname"
                 type="text"
+                required
+                value={userDetail.firstname}
+                onChange={handelInputChange}
                 placeholder="First Name *"
               />
               <input
                 className=" border border-gray-400 w-full hover:ring-offset-black hover:outline-none hover:ring-0 hover:ring-white hover:ring-offset-1  focus:ring-offset-blue-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 h-[60px] rounded-md text-left px-4"
                 id="lastname"
                 type="text"
+                required
+                value={userDetail.lastname}
+                onChange={handelInputChange}
                 name="lastname"
                 placeholder="Last Name *"
               />
@@ -55,6 +102,9 @@ function SignUp() {
               className=" border border-gray-400 w-full mt-4 hover:ring-offset-black hover:outline-none hover:ring-0 hover:ring-white hover:ring-offset-1  focus:ring-offset-blue-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 h-[60px] rounded-md text-left px-4"
               id="email"
               type="email"
+              required
+              value={userDetail.email}
+              onChange={handelInputChange}
               name="email"
               placeholder="Email Address *"
             />
@@ -63,9 +113,15 @@ function SignUp() {
               id="password"
               type="password"
               name="password"
+              required
+              value={userDetail.password}
+              onChange={handelInputChange}
               placeholder="Password *"
             />
-            <button className=" bg-buttonBackground rounded-md font-robotoMedium py-2 w-full mt-4  text-white">
+            <button
+              type="submit"
+              className=" bg-buttonBackground rounded-md font-robotoMedium py-2 w-full mt-4  text-white"
+            >
               SIGN UP
             </button>
           </div>
