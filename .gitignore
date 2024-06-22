@@ -16,6 +16,7 @@ dist-ssr
 
 Backend/api/__pycache__/*
 Backend/api/migrations/*
+Backend/DRF__pycache__/*
 Backend/db.sqlite3
 .vite
 # Editor directories and files
