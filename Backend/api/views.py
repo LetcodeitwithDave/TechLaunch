@@ -28,7 +28,7 @@ def login( request):
         refresh = RefreshToken.for_user(user)
         print(refresh.access_token)
         
-        # return get refresh and access token form RefreshToken
+        # get refresh and access token form RefreshToken
         return Response({
             'refresh': str(refresh),
             'access': str(refresh.access_token),
