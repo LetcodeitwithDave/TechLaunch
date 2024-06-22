@@ -3,6 +3,10 @@ import { LandingHeader } from "../landingpage/components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { showToastMessage } from "../toastutils";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Login() {
   const [userDetail, setUserDetail] = useState({
     email: "",
@@ -21,16 +25,26 @@ function Login() {
         body: JSON.stringify(userDetail),
       });
 
-      const data = await response.json();
+      // if (!response.ok) {
+      //   throw new Error(data.msg || "something went wrong");
+      // }
+      if (response.ok) {
+        const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.msg || "something went wrong");
+        localStorage.setItem("access_token", data.access);
+        localStorage.setItem("refresh_token", data.refresh);
+        console.log("User signed in successfully", data);
+
+        toast.success("Login successful!");
+
+        navigate("/home");
+      } else {
+        const errorData = await response.json();
+
+        toast.error(`Login failed: ${errorData.error}`);
       }
-
-      console.log("User signed in successfully", data);
-
-      navigate("/home");
     } catch (error) {
+      toast.error("An error occurred. Please try again.");
       console.log("Error:", error.response);
     }
   };
@@ -104,6 +118,7 @@ function Login() {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 }
