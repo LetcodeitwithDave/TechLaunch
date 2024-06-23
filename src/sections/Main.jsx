@@ -1,7 +1,7 @@
-import React from 'react';
-import { InputProvider } from '../authcontext/inputContext';
-import Header from './Header';
-import Jobsection from './Jobsection';
+import React from "react";
+import { InputProvider } from "../authcontext/inputContext";
+import Header from "./Header";
+import Jobsection from "./Jobsection";
 
 function Main() {
   return (
