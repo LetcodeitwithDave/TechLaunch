@@ -3,6 +3,9 @@ import { LandingHeader } from "../landingpage/components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function SignUp() {
   const [userDetail, setUserDetail] = useState({
     firstname: "",
@@ -23,16 +26,22 @@ function SignUp() {
         body: JSON.stringify(userDetail),
       });
 
-      const data = await response.json();
+      // if (!response.ok) {
+      //   throw new Error(data.msg || "something went wrong");
+      // }
 
-      if (!response.ok) {
-        throw new Error(data.msg || "something went wrong");
+      if (response.ok) {
+        const data = await response.json();
+        console.log("User signed up successfully", data);
+
+        toast.success("Account created successful!");
+        navigate("/");
+      } else {
+        const errorData = await response.json();
+        toast.error(`Signup failed: ${errorData.error}`);
       }
-
-      console.log("User signed up successfully", data);
-
-      navigate("/login");
     } catch (error) {
+      toast.error("An error occurred. Please try again.");
       console.log("Error:", error.response);
     }
   };
@@ -127,6 +136,7 @@ function SignUp() {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 }
