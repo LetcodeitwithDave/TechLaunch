@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../authcontext/authcontext";
 
 function Login() {
   const [userDetail, setUserDetail] = useState({
@@ -12,6 +13,7 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,7 +37,7 @@ function Login() {
         console.log("User signed in successfully", data);
 
         toast.success("Login successful!");
-
+        setIsAuthenticated(true);
         navigate("/home");
       } else {
         const errorData = await response.json();
