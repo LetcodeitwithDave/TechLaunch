@@ -14,7 +14,7 @@ function LandingHeader() {
     <div>
       <header>
         <nav className="mx-auto px-2 sm:px-6 lg:px-8  flex justify-between items-center max-container ">
-          <div className="flex ml-[116px]">
+          <div className="flex ml-0">
             <img
               src={paperPlane1}
               height={52}
@@ -22,7 +22,7 @@ function LandingHeader() {
               className=" mt-5"
               // className="px-0  h-20 w-[120px] md:h-[90px] md:w-[120px] bg-transparent"
             />
-            <h1 className=" text-black font-robotoBold  text-2xl mt-6">
+            <h1 className=" text-black font-robotoBold  text-xl mt-8">
               TechLaunch
             </h1>
           </div>
