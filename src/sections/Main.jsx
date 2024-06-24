@@ -2,13 +2,18 @@ import React from "react";
 import { InputProvider } from "../authcontext/inputContext";
 import Header from "./Header";
 import Jobsection from "./Jobsection";
+import { LandingHeader } from "../landingpage/components";
+import { Input } from "../components";
 
 function Main() {
   return (
     <InputProvider>
       <main>
         <section>
-          <Header />
+          <LandingHeader />
+        </section>
+        <section>
+          <Input />
         </section>
         <section>
           <Jobsection />
