@@ -1,24 +1,16 @@
 // inputContext.js
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from "react";
 
-const InputContext = createContext();
+export const InputContext = createContext();
 
 const InputProvider = ({ children }) => {
-  const [searchInput, setSearchInput] = useState('');
+  const [userData, setUserData] = useState([]);
 
   return (
-    <InputContext.Provider value={{ searchInput, setSearchInput }}>
+    <InputContext.Provider value={{ userData, setUserData }}>
       {children}
     </InputContext.Provider>
   );
 };
 
-const useInputContext = () => {
-  const context = useContext(InputContext);
-  if (!context) {
-    throw new Error('useInputContext must be used within an InputProvider');
-  }
-  return context;
-};
-
-export { InputProvider, useInputContext };
+export { InputProvider };
