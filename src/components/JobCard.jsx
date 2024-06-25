@@ -1,15 +1,13 @@
-import React from "react";
-import useFetch from "../hook/useFetch";
+import React, { useContext } from "react";
+import { InputContext } from "../authcontext/inputContext";
 
 function JobCard() {
-  const { data} = useFetch();
-
-
+  const { userData } = useContext(InputContext);
 
   return (
     <div className="py-2">
-      {data.length > 0 ? (
-        data.map((job, index) => (
+      {userData.length > 0 ? (
+        userData.map((job, index) => (
           <div key={index} className="py-2">
             <div className="block p-6 max-w-lg rounded-lg border border-gray-300 bg-white">
               <div className="flex space-x-4">
@@ -20,7 +18,7 @@ function JobCard() {
                 </div>
               </div>
               <p>{job.employer_name} </p>
-              
+
               <p>{job.job_city === null ? job.job_country : job.job_city}</p>
               <br />
               <div className="px-2">
