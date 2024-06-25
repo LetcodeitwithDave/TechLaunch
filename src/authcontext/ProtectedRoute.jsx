@@ -1,13 +1,15 @@
 import React from "react";
 import { useAuth } from "./authcontext";
 import { useNavigate } from "react-router-dom";
+import { Main } from "../sections";
+import { Login } from "../components";
 
-const ProtectedRoute = ({home}) =>{
-    const navigate = useNavigate();
+const ProtectedRoute = () => {
+  const navigate = useNavigate();
 
-    const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
 
-    return isAuthenticated ?  home : navigate('/')
-}
+  return isAuthenticated ? <Main /> : <Login />;
+};
 
 export default ProtectedRoute;
