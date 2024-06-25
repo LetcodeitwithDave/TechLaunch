@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useInputContext } from "../authcontext/inputContext";
 
 
 
 const useFetch = () => {
-    const { searchInput } = useInputContext() //data gotten from the input component
 
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false);
@@ -56,3 +54,23 @@ const useFetch = () => {
 export default useFetch;
 // fetchData is consuming option,
 // useEffect is comsuming fetchData
+
+
+
+const { searchInput } = useInputContext()
+const url = `https://jsearch.p.rapidapi.com/search?query=${searchInput || 'Django Developer'}&page=1&num_pages=1&date_posted=all`;
+const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': '8ea29b4f1amshb945df4cfa16601p18b0b1jsnd5b1db74b6f4',
+		'x-rapidapi-host': 'jsearch.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
