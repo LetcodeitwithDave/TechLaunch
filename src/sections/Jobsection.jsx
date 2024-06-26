@@ -2,7 +2,6 @@ import React from "react";
 import { JobCard, JobDetail } from "../components";
 
 function Jobsection() {
-
   return (
     <div className=" flex  max-container justify-center  ">
       <div className=" flex  flex-col pr-6 ">
