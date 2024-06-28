@@ -13,7 +13,7 @@ function LandingHeader() {
     { href: "#", label: "About Us", active: false },
   ];
   const authLink = [
-    { href: "#", label: "Home", active: true },
+    { href: "/home", label: "Home", active: true },
     { href: "#", label: "Jobs", active: false },
   ];
   return (
@@ -55,8 +55,25 @@ function LandingHeader() {
                 ))}
               </ul>
             </div>
-            <div className=" ml-auto flex items-center space-x-3 ">
-              <button className="  gap-6 bg-buttonBackground  px-2 py-2 mt-0 rounded-md text-white font-robotoRegular">
+            <div className="  ml-auto flex items-center space-x-3 ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-align-justify md:hidden"
+              >
+                <line x1="3" x2="21" y1="6" y2="6" />
+                <line x1="3" x2="21" y1="12" y2="12" />
+                <line x1="3" x2="21" y1="18" y2="18" />
+              </svg>
+
+              <button className=" hidden md:block  gap-6 bg-buttonBackground  px-2 py-2 mt-0 rounded-md text-white font-robotoRegular">
                 Post a Job
               </button>
             </div>
