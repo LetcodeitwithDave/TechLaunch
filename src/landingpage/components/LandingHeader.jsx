@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { paperPlane } from "../../assets/landingpageimage";
 import { paperPlane1 } from "../../assets/landingpageimage";
 import { useAuth } from "../../authcontext/authcontext";
 
 function LandingHeader() {
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const { isAuthenticated } = useAuth();
+
+  const toggleSideNav = () => {
+    setIsSideNavOpen(!isSideNavOpen);
+  };
   const navLinks = [
     { href: "#", label: "Home", active: true },
     { href: "#", label: "Jobs", active: false },
@@ -20,15 +25,9 @@ function LandingHeader() {
     <div>
       <header>
         {isAuthenticated ? (
-          <nav className="mx-auto px-2 sm:px-6 lg:px-8  flex items-center  ">
+          <nav className="relative mx-auto px-2 sm:px-6 lg:px-8  flex items-center  ">
             <div className="flex ml-0">
-              <img
-                src={paperPlane1}
-                height={52}
-                width={60}
-                className=" mt-5"
-                // className="px-0  h-20 w-[120px] md:h-[90px] md:w-[120px] bg-transparent"
-              />
+              <img src={paperPlane1} height={52} width={60} className=" mt-5" />
               <h1 className=" text-black font-robotoBold  text-xl mt-8">
                 TechLaunch
               </h1>
@@ -58,14 +57,15 @@ function LandingHeader() {
             <div className="  ml-auto flex items-center space-x-3 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width={24}
+                height={24}
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                onClick={toggleSideNav}
                 className="lucide lucide-align-justify md:hidden"
               >
                 <line x1="3" x2="21" y1="6" y2="6" />
@@ -76,6 +76,41 @@ function LandingHeader() {
               <button className=" hidden md:block  gap-6 bg-buttonBackground  px-2 py-2 mt-0 rounded-md text-white font-robotoRegular">
                 Post a Job
               </button>
+            </div>
+            {/* side Navigation menu */}
+
+            <div
+              className={`md:hidden fixed inset-0 top-0 right-0 bg-blue-700 z-10 transform transition-transform duration-[400ms] ease-in-out ${
+                isSideNavOpen ? "translate-x-48" : "translate-x-full"
+              } overflow-auto`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={24}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                onClick={toggleSideNav}
+                className="lucide lucide-x md:hidden text-white mt-7  mr-2 ml-[276px]  "
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+
+              <div className=" flex mt-3 flex-col px-4">
+                {authLink.map((item) => (
+                  <a
+                    key={item.label}
+                    className="text-white py-2 px-2 w-[280px] hover:bg-blue-600 rounded transition duration-200 font-montserratRegular text-sm"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </nav>
         ) : (
