@@ -1,22 +1,19 @@
 // InputComponent.js
 import React, { useContext, useEffect, useState } from "react";
 import { InputContext } from "../authcontext/inputContext";
+import Dropdown from "../landingpage/components/Dropdown";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
   const { setUserData } = useContext(InputContext);
 
   console.log(searchInput);
 
-  // get the api here
-  // create state to store what the type in the input
-  // use context api to share the state.
-
   const options = {
     method: "GET",
     headers: {
-      // 86363862bbmsh9eb0d6ad11b97e8p1bec71jsn7419c6a18d1b
       "x-rapidapi-key": "86363862bbmsh9eb0d6ad11b97e8p1bec71jsn7419c6a18d1b",
       "x-rapidapi-host": "jsearch.p.rapidapi.com",
     },
@@ -24,19 +21,15 @@ function Input() {
 
   const fetchData = async () => {
     try {
-      //  || "Django Developer"
-      // const response = await fetch(url, options);
+      const filterString = selectedFilters.join("&");
+      console.log(filterString);
       const response = await fetch(
-        `https://jsearch.p.rapidapi.com/search?query=${searchInput}&page=1&num_pages=1&date_posted=all&remote_jobs_only=true`,
+        `https://jsearch.p.rapidapi.com/search?query=${searchInput}&page=1&num_pages=1&date_posted=all&remote_jobs_only=true&${filterString}`,
         options
       );
       console.log(response);
       const result = await response.json();
-      console.log(result.data);
-
-      // store api in state
       setUserData(result.data);
-      // console.log(result.data);
     } catch (error) {
       console.error(error);
     }
@@ -44,12 +37,16 @@ function Input() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selectedFilters]); // Re-fetch data when filters change
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      fetchData(searchInput || "Django Developer");
+      fetchData();
     }
+  };
+
+  const handleFilterSelect = (filter) => {
+    setSelectedFilters((prevFilters) => [...prevFilters, filter]);
   };
 
   return (
@@ -85,6 +82,13 @@ function Input() {
             />
           </svg>
         </button>
+      </div>
+      <div className="flex flex-row gap-1">
+        {/* add onFilterSelect as prop to get filter option */}
+        <Dropdown onFilterSelect={handleFilterSelect} />
+        <Dropdown onFilterSelect={handleFilterSelect} />
+        <Dropdown onFilterSelect={handleFilterSelect} />
+        <Dropdown onFilterSelect={handleFilterSelect} />
       </div>
     </div>
   );
