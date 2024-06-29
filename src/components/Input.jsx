@@ -24,11 +24,10 @@ function Input() {
 
   const fetchData = async () => {
     try {
+      //  || "Django Developer"
       // const response = await fetch(url, options);
       const response = await fetch(
-        `https://jsearch.p.rapidapi.com/search?query=${
-          searchInput || "Django Developer"
-        }&page=1&num_pages=1&date_posted=all&remote_jobs_only=true`,
+        `https://jsearch.p.rapidapi.com/search?query=${searchInput}&page=1&num_pages=1&date_posted=all&remote_jobs_only=true`,
         options
       );
       console.log(response);
