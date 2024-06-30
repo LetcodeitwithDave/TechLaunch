@@ -5,7 +5,13 @@ import Dropdown from "../landingpage/components/Dropdown";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
-  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState({
+    date_posted: "",
+    remote_jobs_only: "",
+    employment_types: "",
+  });
+  // date_posted -> all
+  // remote_jobs_only -> default: false, true
 
   const { setUserData } = useContext(InputContext);
 
@@ -21,14 +27,21 @@ function Input() {
 
   const fetchData = async () => {
     try {
-      const filterString = selectedFilters.join("&");
-      console.log(filterString);
+      const filterparams = Object.keys(selectedFilters)
+        .filter((key) => selectedFilters[key])
+        .map((key) => `${key}=${selectedFilters[key]}`)
+        .join("&");
+      console.log("this is the filter", filterparams);
+
       const response = await fetch(
-        `https://jsearch.p.rapidapi.com/search?query=${searchInput}&page=1&num_pages=1&date_posted=all&remote_jobs_only=true&${filterString}`,
+        `https://jsearch.p.rapidapi.com/search?query=${
+          searchInput || "Django Developer"
+        }&page=1&num_pages=1&${filterparams}`,
         options
       );
       console.log(response);
       const result = await response.json();
+      console.log(result.data);
       setUserData(result.data);
     } catch (error) {
       console.error(error);
@@ -45,8 +58,12 @@ function Input() {
     }
   };
 
-  const handleFilterSelect = (filter) => {
-    setSelectedFilters((prevFilters) => [...prevFilters, filter]);
+  // get data from child component- DropDown
+  const handleFilterSelect = (filterCategory, filter) => {
+    setSelectedFilters((prevFilter) => ({
+      ...prevFilter,
+      [filterCategory]: filter, //key : value from Dropdown component
+    }));
   };
 
   return (
@@ -85,10 +102,26 @@ function Input() {
       </div>
       <div className="flex flex-row gap-1">
         {/* add onFilterSelect as prop to get filter option */}
-        <Dropdown onFilterSelect={handleFilterSelect} />
-        <Dropdown onFilterSelect={handleFilterSelect} />
-        <Dropdown onFilterSelect={handleFilterSelect} />
-        <Dropdown onFilterSelect={handleFilterSelect} />
+        <Dropdown
+          title="Date Posted"
+          options={["all", "today", "3days", "week", "month"]}
+          onFilterSelect={(filter) => handleFilterSelect("date_posted", filter)}
+        />
+        <Dropdown
+          title="Location"
+          options={["true"]}
+          onFilterSelect={(filter) =>
+            handleFilterSelect("remote_jobs_only", filter)
+          }
+        />
+
+        <Dropdown
+          title="Employment type"
+          options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
+          onFilterSelect={(filter) =>
+            handleFilterSelect("employment_types", filter)
+          }
+        />
       </div>
     </div>
   );
