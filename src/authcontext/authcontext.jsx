@@ -11,11 +11,13 @@ export const AuthProvider = ({ children }) => {
   // get access_token if available
   useEffect(() => {
     const token = localStorage.getItem("access_token");
+    console.log("isAuthenticated data in authcontext", token);
     if (token) {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
     }
+    console.log("isAuthenticated state: ", isAuthenticated);
   }, []);
 
   return (
