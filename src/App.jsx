@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
   Navigate,
+  useNavigate,
 } from "react-router-dom";
 import LandingPage from "./landingpage/LandingPage";
 import { Signup, Login } from "./components";
@@ -15,26 +16,37 @@ import { AuthProvider, useAuth } from "./authcontext/authcontext";
 import ProtectedRoute from "./authcontext/ProtectedRoute";
 import { Main } from "./sections";
 function App() {
-  const isAuthenticated = localStorage.getItem("access_token");
   return (
     <AuthProvider>
       <Router>
-        <Routes>
-          <Route path="/home" element={<ProtectedRoute />} />
-          <Route
-            path="/"
-            element={
-              isAuthenticated ? <Navigate to="/home" /> : <LandingPage />
-            }
-          />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <AppRoutes />
       </Router>
     </AuthProvider>
     // </div>
   );
 }
+
+const AppRoutes = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  return (
+    <Routes>
+      <Route path="/home" element={<ProtectedRoute />} />
+      <Route
+        path="/"
+        element={isAuthenticated ? navigate("/home") : <LandingPage />}
+      />
+      <Route
+        path="/signup"
+        element={isAuthenticated ? navigate("/home") : <Signup />}
+      />
+      <Route
+        element={isAuthenticated ? navigate("/home") : <Login />}
+        path="/login"
+      />
+    </Routes>
+  );
+};
 
 export default App;
 library.add(far, fas);
