@@ -7,19 +7,7 @@ import {
   HowItWorks,
 } from "./components";
 
-import { useAuth } from "../authcontext/authcontext";
-import { useNavigate } from "react-router-dom";
-
 function LandingPage() {
-  const { isAuthenticated } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/home");
-    }
-  }, [isAuthenticated, navigate]);
-
   return (
     <main className=" ">
       <section className=" bg-white">
