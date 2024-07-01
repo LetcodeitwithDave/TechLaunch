@@ -1,15 +1,13 @@
 import React from "react";
 import { useAuth } from "./authcontext";
-import { useNavigate } from "react-router-dom";
 import { Main } from "../sections";
 import { Login } from "../components";
+import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = () => {
-  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("access_token");
 
-  const { isAuthenticated } = useAuth();
-
-  return isAuthenticated ? <Main /> : <Login />;
+  return isAuthenticated ? <Main /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
