@@ -3,6 +3,7 @@ import { useState } from "react";
 // onFilterSelect - prop from inputcomponent
 const Dropdown = ({ options, title, onFilterSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
+  console.log("this is the list", options);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
