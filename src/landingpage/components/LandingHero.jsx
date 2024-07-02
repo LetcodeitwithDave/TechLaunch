@@ -9,12 +9,14 @@ function LandingHero() {
           Empower Your Tech Career with Student- Friendly Jobs
         </h1>
         <p className=" text-subheading lg:pt-2 pt-2 md:pt-0 font-montserratRegular text-sm md:text-md md:mb-0 lg:mb-3 mb-3">
-        Find internships, remote work, and freelance opportunities that fit your schedule and help you gain real-world experience.
+          Find internships, remote work, and freelance opportunities that fit
+          your schedule and help you gain real-world experience.
         </p>
-        
-        <button className=" bg-buttonBackground hover:bg-blue-600 transition duration-300 lg:mt-9 mt-9 md:mt-5 px-28 md:px-3 py-3 rounded-md items-center text-white font-montserratSemibold lg:text-lg text-lg md:text-sm  ">
-          Get Started
-        </button>
+        <a href="/signup">
+          <button className=" bg-buttonBackground hover:bg-blue-600 transition duration-300 lg:mt-9 mt-9 md:mt-5 px-28 md:px-3 py-3 rounded-md items-center text-white font-montserratSemibold lg:text-lg text-lg md:text-sm  ">
+            Get Started
+          </button>
+        </a>
       </div>
 
       <div className=" md:w-1/2 mt-9 md:mt-0 px-4">
