@@ -109,7 +109,7 @@ function Input() {
         />
         <Dropdown
           title="Location"
-          options={["true"]}
+          options={["true", "false"]}
           onFilterSelect={(filter) =>
             handleFilterSelect("remote_jobs_only", filter)
           }
