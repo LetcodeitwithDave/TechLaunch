@@ -38,6 +38,7 @@ function SignUp() {
         navigate("/");
       } else {
         const errorData = await response.json();
+        console.log(`Signup failed: ${errorData.error}`);
         toast.error(`Signup failed: ${errorData.error}`);
       }
     } catch (error) {
