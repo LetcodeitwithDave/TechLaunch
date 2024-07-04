@@ -136,7 +136,7 @@ function Input() {
       </div>
 
       {/* send setGetLocation as prop - also get data for location input */}
-      <div className="flex flex-row gap-1 mt-2">
+      <div className="flex flex-row gap-1 mt-4">
         {/* add onFilterSelect as prop to get filter option */}
 
         <Dropdown
