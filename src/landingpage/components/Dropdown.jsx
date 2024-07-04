@@ -1,9 +1,8 @@
 // Dropdown.js
 import { useState } from "react";
 // onFilterSelect - prop from inputcomponent
-const Dropdown = ({ options, title, onFilterSelect }) => {
+const Dropdown = ({ options, title, onFilterSelect, displayOptions }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log("this is the list", options);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -20,7 +19,7 @@ const Dropdown = ({ options, title, onFilterSelect }) => {
       <button
         id="dropdownDefaultButton"
         onClick={toggleDropdown}
-        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        className="text-textColor bg-gray-200 font-montserratRegular focus:ring-gray-400 hover:bg-gray-300 focus:ring-1 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
         type="button"
       >
         {title}
@@ -45,14 +44,14 @@ const Dropdown = ({ options, title, onFilterSelect }) => {
       {isOpen && (
         <div className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-            {options.map((option) => (
-              <li key={option}>
+            {displayOptions.map((displayOption, index) => (
+              <li key={displayOption}>
                 <a
                   href="#"
-                  onClick={() => handleFilterSelect(option)}
+                  onClick={() => handleFilterSelect(options[index])}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
-                  {option}
+                  {displayOption}
                 </a>
               </li>
             ))}
