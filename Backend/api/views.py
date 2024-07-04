@@ -50,9 +50,4 @@ def protectedView(request):
     return Response(user_data, status=status.HTTP_200_OK)
 
 
-    
-
-#     {
-#     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxODY1MTI4OCwiaWF0IjoxNzE4NTY0ODg4LCJqdGkiOiI3NGU2MmUwZTkxZjI0NzExOWM2ZTQ3OTNkMmRlZjQwOCIsInVzZXJfaWQiOjN9.-MyePH3JrZYWZ4SeYeKAVIyYYn-GrHR-lzP242Y5f8A",
-#     "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NTY4NDg4LCJpYXQiOjE3MTg1NjQ4ODgsImp0aSI6ImRjODkwZGE1NmMxMDQ0YTJhMWMxZmM4YjgwNDVlYzEyIiwidXNlcl9pZCI6M30.K9zvJo3Km67meX-n5GFk07wEKUot8WmXRrRDoB-Jl3U"
-# }
+   
