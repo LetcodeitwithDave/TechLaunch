@@ -2,7 +2,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { InputContext } from "../authcontext/inputContext";
 import Dropdown from "../landingpage/components/Dropdown";
-import LocationInput from "./LocationInput";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
@@ -76,17 +75,18 @@ function Input() {
         <div className=" flex items-center border-r border-gray-300 p-2 w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
+            fill="none"
             stroke="currentColor"
-            className="w-6 h-6 text-gray-500 mr-2"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className="lucide lucide-map-pin w-6 h-6 text-gray-500 mr-2 "
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
           </svg>
           <input
             type="text"
