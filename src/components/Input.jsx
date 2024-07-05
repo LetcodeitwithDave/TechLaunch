@@ -140,7 +140,6 @@ function Input() {
         {/* add onFilterSelect as prop to get filter option */}
 
         <Dropdown
-          setGetLocation="dave"
           title="Date Posted"
           displayOptions={[
             "All day",
@@ -155,6 +154,24 @@ function Input() {
 
         <Dropdown
           title="Employment type"
+          displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
+          options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
+          onFilterSelect={(filter) =>
+            handleFilterSelect("employment_types", filter)
+          }
+        />
+
+        <Dropdown
+          title="Location"
+          displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
+          options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
+          onFilterSelect={(filter) =>
+            handleFilterSelect("employment_types", filter)
+          }
+        />
+
+        <Dropdown
+          title="Company"
           displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
           options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
           onFilterSelect={(filter) =>
