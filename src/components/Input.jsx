@@ -1,7 +1,7 @@
 // InputComponent.js
 import React, { useContext, useEffect, useState } from "react";
 import { InputContext } from "../authcontext/inputContext";
-import Dropdown from "../landingpage/components/Dropdown";
+import Dropdown from "./index";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
