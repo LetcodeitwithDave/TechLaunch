@@ -15,6 +15,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { AuthProvider, useAuth } from "./authcontext/authcontext";
 import ProtectedRoute from "./authcontext/ProtectedRoute";
 import { Main } from "./sections";
+import Hope from "../../Hope";
+
 function App() {
   return (
     <AuthProvider>
@@ -44,6 +46,7 @@ const AppRoutes = () => {
         element={isAuthenticated ? navigate("/home") : <Login />}
         path="/login"
       />
+      <Route path="/test" element={<Hope />} />
     </Routes>
   );
 };
