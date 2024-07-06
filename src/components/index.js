@@ -5,6 +5,7 @@ import JobDetail from "./JobDetail";
 import Signup from './Signup.jsx'
 import Login from './Login.jsx'
 import Dropdown from "./Dropdown.jsx";
+import CompanyFilter from "./CompanyFilter.jsx";
 
 export {
     Nav,
@@ -13,6 +14,7 @@ export {
     JobDetail,
     Signup,
     Login,
-    Dropdown
+    Dropdown,
+    CompanyFilter
 
 }
