@@ -172,11 +172,7 @@ function Input() {
         />
 
         <CompanyFilter
-          query={
-            searchInput
-              ? `${searchInput} in ${getLocation}`
-              : "Django developer"
-          }
+          query={getLocation ? `${searchInput} in ${getLocation}` : null}
           onFilterSelect={(filter) =>
             handleFilterSelect("company_types", filter)
           }
