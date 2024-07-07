@@ -1,7 +1,7 @@
 // InputComponent.js
 import React, { useContext, useEffect, useState } from "react";
 import { InputContext } from "../authcontext/inputContext";
-import Dropdown from "./index";
+import { Dropdown, CompanyFilter } from "./index";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
@@ -9,6 +9,7 @@ function Input() {
   const [selectedFilters, setSelectedFilters] = useState({
     date_posted: "",
     employment_types: "",
+    company_types: "",
   });
 
   const { setUserData } = useContext(InputContext);
@@ -170,12 +171,14 @@ function Input() {
           }
         />
 
-        <Dropdown
-          title="Company"
-          displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
-          options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
+        <CompanyFilter
+          query={
+            searchInput
+              ? `${searchInput} in ${getLocation}`
+              : "Django developer"
+          }
           onFilterSelect={(filter) =>
-            handleFilterSelect("employment_types", filter)
+            handleFilterSelect("company_types", filter)
           }
         />
       </div>
