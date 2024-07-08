@@ -151,49 +151,52 @@ function Input() {
         </div>
       </div>
 
-      <div className="flex flex-row gap-1 mt-4">
-        {/* add onFilterSelect as prop to get filter option */}
+      {isLoading ? null : (
+        <div className="flex flex-row gap-1 mt-4">
+          {/* add onFilterSelect as prop to get filter option */}
 
-        <Dropdown
-          title="Date Posted"
-          displayOptions={[
-            "All day",
-            "Past 24 hours",
-            "Past 3days",
-            "Past week",
-            "Past month",
-          ]}
-          options={["all", "today", "3days", "week", "month"]}
-          onFilterSelect={(filter) => handleFilterSelect("date_posted", filter)}
-        />
+          <Dropdown
+            title="Date Posted"
+            displayOptions={[
+              "All day",
+              "Past 24 hours",
+              "Past 3days",
+              "Past week",
+              "Past month",
+            ]}
+            options={["all", "today", "3days", "week", "month"]}
+            onFilterSelect={(filter) =>
+              handleFilterSelect("date_posted", filter)
+            }
+          />
 
-        <Dropdown
-          title="Job Type"
-          displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
-          options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
-          onFilterSelect={(filter) =>
-            handleFilterSelect("employment_types", filter)
-          }
-        />
+          <Dropdown
+            title="Job Type"
+            displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
+            options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
+            onFilterSelect={(filter) =>
+              handleFilterSelect("employment_types", filter)
+            }
+          />
 
-        <Dropdown
-          title="Company"
-          displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
-          options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
-          onFilterSelect={(filter) =>
-            handleFilterSelect("employment_types", filter)
-          }
-        />
-
-        <CompanyFilter
-          isLoading={isLoading}
-          title="Company Type"
-          query={completedQuery} //send completed query
-          onFilterSelect={(filter) =>
-            handleFilterSelect("company_types", filter)
-          }
-        />
-      </div>
+          <Dropdown
+            title="Company"
+            displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
+            options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
+            onFilterSelect={(filter) =>
+              handleFilterSelect("employment_types", filter)
+            }
+          />
+          <CompanyFilter
+            isLoading={isLoading}
+            title="Company Type"
+            query={completedQuery} //send completed query
+            onFilterSelect={(filter) =>
+              handleFilterSelect("company_types", filter)
+            }
+          />
+        </div>
+      )}
     </div>
   );
 }
