@@ -6,6 +6,7 @@ import { Dropdown, CompanyFilter } from "./index";
 function Input() {
   const [searchInput, setSearchInput] = useState("");
   const [getLocation, setGetLocation] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedFilters, setSelectedFilters] = useState({
     date_posted: "",
     employment_types: "",
@@ -19,7 +20,7 @@ function Input() {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "11176b3d81msh1249e7c0bded57cp1ffb0ajsn50869dc9a9fd",
+      "x-rapidapi-key": "8ea29b4f1amshb945df4cfa16601p18b0b1jsnd5b1db74b6f4",
       "x-rapidapi-host": "jsearch.p.rapidapi.com",
     },
   };
@@ -41,11 +42,15 @@ function Input() {
         options
       );
       console.log(response);
+      setIsLoading(false);
+      if (response.ok) {
+        const result = await response.json();
 
-      const result = await response.json();
-
-      console.log(result.data);
-      setUserData(result.data);
+        console.log(result.data);
+        setUserData(result.data);
+      } else {
+        console.log("somthing went wrong with fetch");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -136,7 +141,6 @@ function Input() {
         </div>
       </div>
 
-      {/* send setGetLocation as prop - also get data for location input */}
       <div className="flex flex-row gap-1 mt-4">
         {/* add onFilterSelect as prop to get filter option */}
 
@@ -154,7 +158,7 @@ function Input() {
         />
 
         <Dropdown
-          title="Employment type"
+          title="Job Type"
           displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
           options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
           onFilterSelect={(filter) =>
@@ -163,7 +167,7 @@ function Input() {
         />
 
         <Dropdown
-          title="Location"
+          title="Company"
           displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
           options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
           onFilterSelect={(filter) =>
@@ -172,6 +176,7 @@ function Input() {
         />
 
         <CompanyFilter
+          isLoading={isLoading}
           query={getLocation ? `${searchInput} in ${getLocation}` : null}
           onFilterSelect={(filter) =>
             handleFilterSelect("company_types", filter)
