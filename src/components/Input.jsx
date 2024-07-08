@@ -7,6 +7,7 @@ function Input() {
   const [searchInput, setSearchInput] = useState("");
   const [getLocation, setGetLocation] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [completedQuery, setCompletedQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState({
     date_posted: "",
     employment_types: "",
@@ -25,17 +26,13 @@ function Input() {
     },
   };
 
-  const fetchData = async () => {
+  const fetchData = async (query) => {
     try {
       const filterparams = Object.keys(selectedFilters)
         .filter((key) => selectedFilters[key])
         .map((key) => `${key}=${selectedFilters[key]}`)
         .join("&");
       console.log("this is the filter", filterparams);
-
-      const query = getLocation
-        ? `${searchInput} in ${getLocation}`
-        : searchInput || "Django developer";
 
       const response = await fetch(
         `https://jsearch.p.rapidapi.com/search?query=${query}&page=1&num_pages=1&remote_jobs_only=true&${filterparams}`,
@@ -57,13 +54,26 @@ function Input() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, [selectedFilters]); // Re-fetch data when filters change
+    if (completedQuery) {
+      fetchData(completedQuery); //pass query to fetchData
+    }
+  }, [completedQuery, selectedFilters]); // Re-fetch data when filter & completed change
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      fetchData();
+      const query = getLocation
+        ? `${searchInput} in ${getLocation}`
+        : searchInput || "Django developer";
+      setCompletedQuery(query);
     }
+  };
+
+  //set completed query
+  const handleButtonclick = () => {
+    const query = getLocation
+      ? `${searchInput} in ${getLocation}`
+      : searchInput || "Django developer";
+    setCompletedQuery(query);
   };
 
   // get data from child component- DropDown
@@ -120,7 +130,7 @@ function Input() {
           />
           <button
             type="submit"
-            onClick={() => fetchData()}
+            onClick={handleButtonclick}
             className="right-3 top-3"
           >
             <svg
@@ -177,7 +187,8 @@ function Input() {
 
         <CompanyFilter
           isLoading={isLoading}
-          query={getLocation ? `${searchInput} in ${getLocation}` : null}
+          title="Company Type"
+          query={completedQuery} //send completed query
           onFilterSelect={(filter) =>
             handleFilterSelect("company_types", filter)
           }
