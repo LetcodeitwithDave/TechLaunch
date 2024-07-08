@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-function CompanyFilter({ query, onFilterSelect }) {
+function CompanyFilter({ isLoading, query, onFilterSelect }) {
   const queryRef = useRef(query); //store search text
   const [timeoutId, setTimeoutId] = useState(null);
 
@@ -33,19 +33,20 @@ function CompanyFilter({ query, onFilterSelect }) {
   };
 
   useEffect(() => {
-    queryRef.current = query; //check if query changes
-    if (timeoutId) {
-      clearTimeout(setTimeoutId); // clear previous timeout
-    }
-
-    const newTimeOut = setTimeout(() => {
-      if (queryRef.current) {
-        fetchData(queryRef.current);
+    if (!isLoading) {
+      queryRef.current = query; //check if query changes
+      if (timeoutId) {
+        clearTimeout(setTimeoutId); // clear previous timeout
       }
-    }, 1000);
+      const newTimeOut = setTimeout(() => {
+        if (queryRef.current) {
+          fetchData(queryRef.current);
+        }
+      }, 1000);
 
-    setTimeoutId(newTimeOut); //store timeout id
-    return () => clearTimeout(newTimeOut);
+      setTimeoutId(newTimeOut); //store timeout id
+      return () => clearTimeout(newTimeOut);
+    }
   }, [query]);
 
   // get filter from selected value
@@ -55,7 +56,7 @@ function CompanyFilter({ query, onFilterSelect }) {
   };
 
   return (
-    <div className="flex items-center justify-center p-4 my-6">
+    <div className="">
       <select onChange={(e) => handleFilterSelect(e.target.value)}>
         <option value="">Select Company Type</option>
         {companyType &&
