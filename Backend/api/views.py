@@ -3,9 +3,10 @@ from django.contrib.auth import authenticate, login
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .serializers import MyUserSerializer
+from .serializers import MyUserSerializer, AccountSerializer
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from .models import Account
 
 @api_view(['POST'])
 def signup( request):
@@ -48,6 +49,27 @@ def protectedView(request):
     }
     print(user_data)
     return Response(user_data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET', 'POST'])
+def account(request):
+    if request.method == 'GET':
+        user = Account.objects.all()
+        # pass query and serialize it
+        serializer = AccountSerializer(user, many=True )
+        return Response({'success' : serializer.data})
+    
+    elif request.method =='POST':
+        #get serializer
+        serializer = AccountSerializer(data= request.data)
+        #if valid
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        
+
 
 
    
