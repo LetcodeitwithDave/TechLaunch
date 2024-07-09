@@ -1,4 +1,4 @@
-from .models import MyUser
+from .models import MyUser, Account
 from rest_framework import serializers
 
 class MyUserSerializer(serializers.ModelSerializer):
@@ -17,3 +17,9 @@ class MyUserSerializer(serializers.ModelSerializer):
         )
         return user
     # , 'lastname'
+
+
+class AccountSerializer (serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = '__all__'
