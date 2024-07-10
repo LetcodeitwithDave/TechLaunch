@@ -52,12 +52,14 @@ def protectedView(request):
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def account(request):
     if request.method == 'GET':
         user = Account.objects.all()
+        email =  request.user.email
         # pass query and serialize it
         serializer = AccountSerializer(user, many=True )
-        return Response({'success' : serializer.data})
+        return Response({'success' : serializer.data, 'email' : email})
     
     elif request.method =='POST':
         #get serializer
