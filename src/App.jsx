@@ -15,7 +15,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { AuthProvider, useAuth } from "./authcontext/authcontext";
 import ProtectedRoute from "./authcontext/ProtectedRoute";
 import { Main } from "./sections";
-import Test from "../public/test";
+import Account from "../../Account";
 
 function App() {
   return (
@@ -47,7 +47,7 @@ const AppRoutes = () => {
         path="/login"
       />
 
-      <Route path="/test" element={<Test />} />
+      <Route path="/test" element={<Account />} />
     </Routes>
   );
 };
