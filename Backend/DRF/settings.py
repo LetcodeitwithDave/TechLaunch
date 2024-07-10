@@ -34,7 +34,7 @@ REST_FRAMEWORK = {
 CORS_ALLOW_ALL_ORIGINS = True  # Allow requests from any origin
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(seconds=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #cors
     'corsheaders.middleware.CorsMiddleware',
 ]
 
