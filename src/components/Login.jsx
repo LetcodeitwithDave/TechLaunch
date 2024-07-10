@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LandingHeader } from "../landingpage/components";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -60,7 +60,7 @@ function Login() {
     <div>
       <LandingHeader />
 
-      <form onSubmit={handleLogin}>
+      <form method="post" onSubmit={handleLogin}>
         <div className=" mt-8  md:mx-[480px] flex flex-col items-center justify-center">
           {/* lock icon */}
           <div className=" border rounded-full bg-buttonBackground flex justify-center w-12 h-12 font-robotoRegular">
