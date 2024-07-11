@@ -27,7 +27,7 @@ def login( request):
     if user is not None:
         # generate a token for user
         refresh = RefreshToken.for_user(user)
-        print(refresh.access_token)
+        print('refresh ->', refresh)
         
         # get refresh and access token form RefreshToken
         return Response({
@@ -62,9 +62,8 @@ def account(request):
         return Response({'success' : serializer.data, 'email' : email})
     
     elif request.method =='POST':
-        #get serializer
+        #serializer post data
         serializer = AccountSerializer(data= request.data)
-        #if valid
         if serializer.is_valid():
             serializer.save()
 
