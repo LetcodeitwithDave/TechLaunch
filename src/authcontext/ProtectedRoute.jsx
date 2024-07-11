@@ -6,7 +6,7 @@ import { Navigate, Route, useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
-  // const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useContext(AuthContext);
 
   // useEffect(() => {
   //   if (!isAuthenticated) {
@@ -14,17 +14,17 @@ const ProtectedRoute = ({ children }) => {
   //   }
   // }, [isAuthenticated, navigate]);
 
-  // return isAuthenticated ? <Main /> : null;
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
 
-  const { isAuthenticated } = useContext(AuthContext);
-  console.log("auth in protected view ", isAuthenticated.refresh);
+  return isAuthenticated && children;
 
-  return isAuthenticated ? children : navigate("/login");
-  //
+  // const { isAuthenticated } = useContext(AuthContext);
 
-  // return (
-  //   <Route {...rest}>{isAuthenticated ? children : navigate("/login")}</Route>
-  // );
+  // return isAuthenticated ? children : navigate("/login");
 };
 
 export default ProtectedRoute;
