@@ -17,19 +17,36 @@ import ProtectedRoute from "./authcontext/ProtectedRoute";
 import { Main } from "./sections";
 import Account from "../../Account";
 import Know from "../public/Know";
+import Unauthourized from "./authcontext/Unauthourized";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          <Route element={<Account />} path="/test" />
-          <Route element={<Login />} path="/login" />
+          <Route
+            element={<Unauthourized children={<Login />} />}
+            path="/login"
+          />
 
-          <Route element={<Signup />} path="/signup" />
+          <Route
+            element={<Unauthourized children={<Signup />} />}
+            path="/signup"
+          />
+
+          <Route
+            element={<Unauthourized children={<LandingPage />} />}
+            path="/"
+          />
+
           <Route
             element={<ProtectedRoute children={<Know />} />}
             path="/know"
+          />
+
+          <Route
+            element={<ProtectedRoute children={<Main />} />}
+            path="/home"
           />
         </Routes>
       </Router>
