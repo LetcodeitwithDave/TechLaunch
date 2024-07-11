@@ -32,12 +32,14 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
 
-        localStorage.setItem("access_token", data.access);
-        localStorage.setItem("refresh_token", data.refresh);
-        console.log("User signed in successfully", data);
+        // localStorage.setItem("access_token", data.access);
+        // localStorage.setItem("refresh_token", data.refresh);
 
+        localStorage.setItem("authtoken", JSON.stringify(data));
+
+        console.log("User signed in successfully", data);
+        setIsAuthenticated(data);
         toast.success("Login successful!");
-        setIsAuthenticated(true);
         navigate("/home");
       } else {
         const errorData = await response.json();
