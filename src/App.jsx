@@ -16,8 +16,8 @@ import { AuthProvider, useAuth } from "./authcontext/authcontext";
 import ProtectedRoute from "./authcontext/ProtectedRoute";
 import { Main } from "./sections";
 import Account from "../../Account";
-import Know from "../public/Know";
 import Unauthourized from "./authcontext/Unauthourized";
+import Know from "../public/Know";
 
 function App() {
   return (
