@@ -8,7 +8,7 @@ import { Input } from "../components";
 function Main() {
   return (
     <InputProvider>
-      <main>
+      <main className="bg-heroBackground">
         <section>
           <LandingHeader />
         </section>
