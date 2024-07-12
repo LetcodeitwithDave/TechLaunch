@@ -85,10 +85,10 @@ function Input() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 my-6">
-      <div className=" flex items-center border rounded-full border-gray-300 w-full max-w-3xl shadow-lg">
+    <div className="flex flex-col items-center justify-center p-4 my-2">
+      <div className=" flex items-center border rounded-full bg-white  w-full max-w-3xl shadow-lg">
         {/* location input */}
-        <div className=" flex items-center border-r border-gray-300 p-2 w-full">
+        <div className=" flex items-center border-r  border-gray-300 p-2 w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
