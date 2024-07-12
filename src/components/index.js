@@ -4,13 +4,14 @@ import JobCard from "./JobCard";
 import JobDetail from "./JobDetail";
 import Dropdown from "./Dropdown.jsx";
 import CompanyFilter from "./CompanyFilter.jsx";
-
+import Filter from "./Filter.jsx";
 export {
     Nav,
     Input,
     JobCard,
     JobDetail,
     Dropdown,
-    CompanyFilter
+    CompanyFilter,
+    Filter,
 
 }
