@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { paperPlane } from "../../assets/landingpageimage";
 import { paperPlane1 } from "../../assets/landingpageimage";
-import { useAuth } from "../../authcontext/authcontext";
+import { AuthContext, useAuth } from "../../authcontext/authcontext";
 
 function LandingHeader() {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useContext(AuthContext);
 
   const toggleSideNav = () => {
     setIsSideNavOpen(!isSideNavOpen);
@@ -18,17 +18,19 @@ function LandingHeader() {
     { href: "#", label: "About Us", active: false },
   ];
   const authLink = [
-    { href: "/home", label: "Home", active: true },
-    { href: "#", label: "Jobs", active: false },
+    { href: "#", label: "Portfolio", active: false },
+    { href: "/home", label: "Job Offer", active: true },
+    { href: "#", label: "Message", active: false },
+    { href: "#", label: "Notification", active: false },
   ];
   return (
     <div>
-      <header>
+      <header className=" bg-white">
         {isAuthenticated ? (
-          <nav className="relative mx-auto px-2 sm:px-6 lg:px-8  flex items-center  ">
-            <div className="flex ml-0">
-              <img src={paperPlane1} height={52} width={60} className=" mt-5" />
-              <h1 className=" text-black font-robotoBold  text-xl mt-8">
+          <nav className="relative mx-auto px-2 sm:px-6 lg:px-8 justify-between  flex items-center  ">
+            <div className="flex ml-0 ">
+              <img src={paperPlane1} height={40} width={50} className="mt-2 " />
+              <h1 className=" text-black font-robotoBold  text-md mt-4">
                 TechLaunch
               </h1>
             </div>
@@ -37,7 +39,7 @@ function LandingHeader() {
               {/* modification for the menu */}
               {/* flex to col in smaller screens and row on larger */}
 
-              <ul className="sm:flex flex-row justify-start gap-3 font-robotoRegular">
+              <ul className="sm:flex flex-row justify-center gap-7 font-robotoRegular">
                 {authLink.map((item) => (
                   <li key={item.label}>
                     <a
@@ -54,7 +56,7 @@ function LandingHeader() {
                 ))}
               </ul>
             </div>
-            <div className="  ml-auto flex items-center space-x-3 ">
+            <div className="  flex items-center space-x-3 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
