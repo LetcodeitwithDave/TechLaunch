@@ -1,31 +1,26 @@
 import React, { useContext, useState } from "react";
 import { FilterContext } from "../authcontext/filterContext";
+import {
+  datePostedDisplay,
+  jobTypeDisplay,
+  datePostedOption,
+  jobTypeOption,
+} from "../constants";
 
 function Filter() {
   const [isClicked, setIsClicked] = useState("");
   const { selectedFilters, setSelectedFilters } = useContext(FilterContext);
 
-  const dateposted = [
-    { href: "#", label: "All day" },
-    { href: "#", label: "Past 24 hours" },
-    { href: "#", label: "Past 3days" },
-    { href: "#", label: "Past week" },
-    { href: "#", label: "Past month" },
-  ];
-
-  const jobtype = [
-    { href: "#", label: "Full-Time" },
-    { href: "#", label: "Contract" },
-    { href: "#", label: "Part-time" },
-    { href: "#", label: " Intern" },
-  ];
-
-  const handleFilterSelect = (filterCategory, filter, index, filterSection) => {
+  const handleFilterSelect = (
+    filterCategory,
+    queryFilter,
+    index,
+    filterSection
+  ) => {
     setSelectedFilters((prevFilter) => ({
       ...prevFilter,
-      [filterCategory]: filter, //key : value from Dropdown component
+      [filterCategory]: queryFilter[index], //use index to get exact query value
     }));
-
     setIsClicked(filterSection[index].label);
     console.log("this is the index ", isClicked);
 
@@ -42,7 +37,7 @@ function Filter() {
         </div>
 
         <div className="sm:flex flex-col gap-1 mt-2 justify-center font-robotoRegular">
-          {dateposted.map((item, index) => (
+          {datePostedDisplay.map((item, index) => (
             <a
               key={item.label}
               className={" text-gray-700 py-2 rounded-md text-sm"}
@@ -52,9 +47,9 @@ function Filter() {
                 onClick={() =>
                   handleFilterSelect(
                     "date_posted",
-                    item.label,
+                    datePostedOption,
                     index,
-                    dateposted
+                    datePostedDisplay
                   )
                 }
               >
@@ -62,7 +57,7 @@ function Filter() {
                   className={`w-4 h-4 border ${
                     isClicked && item.label == isClicked
                       ? "bg-blue-500"
-                      : console.log("something is wron")
+                      : console.log("something is wrong")
                   }  border-gray-400 rounded-sm `}
                 ></div>
                 <div>{item.label}</div>
@@ -77,7 +72,7 @@ function Filter() {
           Job Type
         </div>
         <div className="sm:flex flex-col gap-1 mt-2 justify-center font-robotoRegular">
-          {jobtype.map((item, index) => (
+          {jobTypeDisplay.map((item, index) => (
             <a
               key={item.label}
               className={`text-gray-700 py-2 rounded-md text-sm`}
@@ -87,9 +82,9 @@ function Filter() {
                 onClick={() => {
                   handleFilterSelect(
                     "employment_types",
-                    item.label,
+                    jobTypeOption,
                     index,
-                    jobtype
+                    jobTypeDisplay
                   );
                 }}
               >
