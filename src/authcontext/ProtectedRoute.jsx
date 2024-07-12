@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AuthContext, useAuth } from "./authcontext";
-import { Main } from "../sections";
-import { Login } from "../components";
+
 import { Navigate, Route, useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
