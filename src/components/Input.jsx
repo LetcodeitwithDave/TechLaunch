@@ -2,18 +2,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { InputContext } from "../authcontext/inputContext";
 import { Dropdown, CompanyFilter } from "./index";
+import { FilterContext } from "../authcontext/filterContext";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
   const [getLocation, setGetLocation] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [completedQuery, setCompletedQuery] = useState("");
-  const [selectedFilters, setSelectedFilters] = useState({
-    date_posted: "",
-    employment_types: "",
-    company_types: "",
-  });
-
+  // const [selectedFilters, setSelectedFilters] = useState({
+  //   date_posted: "",
+  //   employment_types: "",
+  //   company_types: "",
+  // });
+  const { selectedFilters, setSelectedFilters } = useContext(FilterContext);
   const { setUserData } = useContext(InputContext);
 
   console.log(searchInput);
@@ -32,7 +33,7 @@ function Input() {
         .filter((key) => selectedFilters[key])
         .map((key) => `${key}=${selectedFilters[key]}`)
         .join("&");
-      console.log("this is the filter", filterparams);
+      console.log("this is the filter in input component ", filterparams);
 
       const response = await fetch(
         `https://jsearch.p.rapidapi.com/search?query=${query}&page=1&num_pages=1&remote_jobs_only=true&${filterparams}`,
