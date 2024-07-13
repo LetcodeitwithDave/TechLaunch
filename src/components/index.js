@@ -5,6 +5,7 @@ import JobDetail from "./JobDetail";
 import Dropdown from "./Dropdown.jsx";
 import CompanyFilter from "./CompanyFilter.jsx";
 import Filter from "./Filter.jsx";
+import ProfileCard from "./ProfileCard.jsx";
 export {
     Nav,
     Input,
@@ -13,5 +14,5 @@ export {
     Dropdown,
     CompanyFilter,
     Filter,
-
+    ProfileCard,
 }
