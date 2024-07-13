@@ -2,27 +2,23 @@ import React, { useContext, useState } from "react";
 import { FilterContext } from "../authcontext/filterContext";
 import {
   datePostedDisplay,
+  datePostedQuery,
   jobTypeDisplay,
-  datePostedOption,
-  jobTypeOption,
+  jobTypeQuery,
 } from "../constants";
 
 function Filter() {
   const [isClicked, setIsClicked] = useState("");
+  const [jobClicked, setJobClicked] = useState("");
   const { selectedFilters, setSelectedFilters } = useContext(FilterContext);
 
-  const handleFilterSelect = (
-    filterCategory,
-    queryFilter,
-    index,
-    filterSection
-  ) => {
+  const handleFilterSelect = (filterCategory, queryFilter, index) => {
     setSelectedFilters((prevFilter) => ({
       ...prevFilter,
       [filterCategory]: queryFilter[index], //use index to get exact query value
     }));
-    setIsClicked(filterSection[index].label);
-    console.log("this is the index ", isClicked);
+    // setIsClicked(filterSection[index].label);
+    // console.log("this is the index ", isClicked);
 
     console.log("selectedFilters -> ", selectedFilters);
   };
@@ -44,14 +40,11 @@ function Filter() {
             >
               <div
                 className=" flex gap-2"
-                onClick={() =>
-                  handleFilterSelect(
-                    "date_posted",
-                    datePostedOption,
-                    index,
-                    datePostedDisplay
-                  )
-                }
+                onClick={() => {
+                  handleFilterSelect("date_posted", datePostedQuery, index);
+                  setIsClicked(datePostedDisplay[index].label);
+                  console.log("this is the index ", isClicked);
+                }}
               >
                 <div
                   className={`w-4 h-4 border ${
@@ -80,17 +73,17 @@ function Filter() {
               <div
                 className=" flex gap-2"
                 onClick={() => {
-                  handleFilterSelect(
-                    "employment_types",
-                    jobTypeOption,
-                    index,
-                    jobTypeDisplay
+                  handleFilterSelect("employment_types", jobTypeQuery, index);
+                  setJobClicked(jobTypeDisplay[index].label);
+                  console.log(
+                    "this is the index  in job",
+                    jobTypeDisplay[index].label
                   );
                 }}
               >
                 <div
                   className={`w-4 h-4 border ${
-                    isClicked && item.label == isClicked
+                    jobClicked && item.label == jobClicked
                       ? "bg-blue-500"
                       : console.log("something is wron")
                   }  border-gray-400 rounded-sm `}
@@ -103,6 +96,8 @@ function Filter() {
       </div>
 
       <h1 className=" mt-5">{isClicked}</h1>
+
+      <h1 className=" mt-5">{jobClicked}</h1>
     </div>
   );
 }
