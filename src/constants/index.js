@@ -6,7 +6,7 @@ export const datePostedDisplay = [
     { label: "Past month" },
   ];
 
-export const datePostedOption = ["all", "today", "3days", "week", "month"]
+export const datePostedQuery = ["all", "today", "3days", "week", "month"]
 
 export const jobTypeDisplay = [
     { label: "Full-Time" },
@@ -16,5 +16,5 @@ export const jobTypeDisplay = [
   ];
 
 
-export const jobTypeOption=["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]
+export const jobTypeQuery=["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]
 
