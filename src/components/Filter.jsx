@@ -24,20 +24,17 @@ function Filter() {
   };
 
   return (
-    <div className=" w-72 px-5 h-screen bg-white rounded-xl">
+    <div className=" w-72 px-5  bg-white rounded-xl">
       <div className=" py-6 font-robotoBold text-gray-950 text-xl">Filter</div>
 
       <div className="mt-2">
-        <div className=" text-gray-950 font-robotoBold text-[15px]">
+        <div className=" text-gray-950 font-robotoBold text-[14px]">
           Data Posted
         </div>
 
         <div className="sm:flex flex-col gap-1 mt-2 justify-center font-robotoRegular">
           {datePostedDisplay.map((item, index) => (
-            <a
-              key={item.label}
-              className={" text-gray-700 py-2 rounded-md text-sm"}
-            >
+            <a key={item.label} className={" text-gray-700 py-2 rounded-md "}>
               <div
                 className=" flex gap-2"
                 onClick={() => {
@@ -53,7 +50,7 @@ function Filter() {
                       : console.log("something is wrong")
                   }  border-gray-400 rounded-sm `}
                 ></div>
-                <div>{item.label}</div>
+                <div className=" text-xs">{item.label}</div>
               </div>
             </a>
           ))}
@@ -61,15 +58,12 @@ function Filter() {
       </div>
 
       <div className=" mt-4">
-        <div className=" text-gray-950 font-robotoBold text-[15px]">
+        <div className=" text-gray-950 font-robotoBold text-[14px]">
           Job Type
         </div>
         <div className="sm:flex flex-col gap-1 mt-2 justify-center font-robotoRegular">
           {jobTypeDisplay.map((item, index) => (
-            <a
-              key={item.label}
-              className={`text-gray-700 py-2 rounded-md text-sm`}
-            >
+            <a key={item.label} className={`text-gray-700 py-2 rounded-md `}>
               <div
                 className=" flex gap-2"
                 onClick={() => {
@@ -85,10 +79,10 @@ function Filter() {
                   className={`w-4 h-4 border ${
                     jobClicked && item.label == jobClicked
                       ? "bg-blue-500"
-                      : console.log("something is wron")
+                      : console.log("something is wrong")
                   }  border-gray-400 rounded-sm `}
                 ></div>
-                <div>{item.label}</div>
+                <div className=" text-xs">{item.label}</div>
               </div>
             </a>
           ))}
