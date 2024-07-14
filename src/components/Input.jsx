@@ -152,9 +152,7 @@ function Input() {
         </div>
       </div>
 
-      {isLoading ? null : (
-        <div className="flex flex-row gap-1 mt-4">
-          {/* add onFilterSelect as prop to get filter option */}
+      {/* <div className="flex flex-row gap-1 mt-4">
 
           <Dropdown
             title="Date Posted"
@@ -196,8 +194,7 @@ function Input() {
               handleFilterSelect("company_types", filter)
             }
           />
-        </div>
-      )}
+        </div> */}
     </div>
   );
 }
