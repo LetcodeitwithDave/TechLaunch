@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .serializers import MyUserSerializer, AccountSerializer
+from .serializers import MyUserSerializer
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Account
@@ -51,25 +51,6 @@ def protectedView(request):
     return Response(user_data, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def account(request):
-    if request.method == 'GET':
-        user = Account.objects.all()
-        email =  request.user.email
-        # pass query and serialize it
-        serializer = AccountSerializer(user, many=True )
-        return Response({'success' : serializer.data, 'email' : email})
-    
-    elif request.method =='POST':
-        #serializer post data
-        serializer = AccountSerializer(data= request.data)
-        if serializer.is_valid():
-            serializer.save()
-
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
-        
 
 
 
