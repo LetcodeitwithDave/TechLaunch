@@ -12,9 +12,9 @@ function Jobsection() {
         <JobCard />
       </div>
 
-      <div className="justify-end hidden lg:block ml-auto mr-6   ">
+      {/* <div className="justify-end hidden lg:block ml-auto mr-6   ">
         <ProfileCard />
-      </div>
+      </div> */}
       {/* <div className="hidden md:block lg:w-1/3 h-screen overflow-y-auto sticky top-0">
         <JobDetail />
       </div> */}
