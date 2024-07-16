@@ -88,10 +88,6 @@ function Filter() {
           ))}
         </div>
       </div>
-
-      <h1 className=" mt-5">{isClicked}</h1>
-
-      <h1 className=" mt-5">{jobClicked}</h1>
     </div>
   );
 }
