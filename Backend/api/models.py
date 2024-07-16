@@ -55,3 +55,5 @@ class Account(models.Model):
 
     def __str__(self) :
         return f'firstname = {self.firstname}, lastname = {self.lastname}, email= {self.email}'
+
+    
