@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { InputContext } from "../authcontext/inputContext";
 import { job3 } from "../assets/images";
+import JobDetail from "./JobDetail";
 
 function JobCard() {
-  const { userData } = useContext(InputContext);
-  // .job_highlights.Responsibilities
+  const { userData, setJobDetail } = useContext(InputContext);
+  const [jobDetailsOpen, setJobDetailsOpen] = useState(false);
 
   const truncateText = (text, limit) => {
     if (text.length > limit) {
@@ -13,13 +14,26 @@ function JobCard() {
     return text;
   };
 
+  const test = () => {
+    console.log("job details oo");
+    setJobDetailsOpen(!jobDetailsOpen);
+  };
+
+  const jobDetail = (index) => {
+    setJobDetail(userData[index]);
+    setJobDetailsOpen(!jobDetailsOpen);
+    console.log("each job data -> ", userData[index]);
+  };
   return (
     <div className="">
       {userData.length > 0 ? (
         userData.map((job, index) => (
           <div key={index} className="py-2">
             {/* it starts here */}
-            <div className=" max-w-4xl p-6 flex flex-row gap-4  rounded-lg border border-gray-300 bg-white">
+            <div
+              onClick={() => jobDetail(index)}
+              className="  max-w-4xl p-6 flex flex-row gap-4  rounded-lg border border-gray-300 bg-white"
+            >
               {/* image */}
               <div>
                 {job.employer_logo ? (
@@ -83,7 +97,10 @@ function JobCard() {
         ))
       ) : (
         <div className="">
-          <div className="p-6 flex flex-row gap-4  rounded-lg border border-gray-300 bg-white">
+          <div
+            onClick={() => test()}
+            className=" p-6 flex flex-row gap-4  rounded-lg border border-gray-300 bg-white"
+          >
             <div>
               <img
                 src={job3}
@@ -151,6 +168,37 @@ function JobCard() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* <div className=" absolute h-screen overflow-y-auto items-center flex justify-center ">
+        {jobDetailsOpen && <JobDetail />}
+      </div> */}
+
+      {jobDetailsOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
+          <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl  max-h-full  mx-auto">
+            <button
+              onClick={() => setJobDetailsOpen(false)}
+              className=" top-2 right-2 hover:text-gray-700 hover:bg-gray-100 hover:rounded-sm px-1 py-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <JobDetail />
           </div>
         </div>
       )}
