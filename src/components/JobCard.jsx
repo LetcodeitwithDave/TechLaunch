@@ -4,8 +4,8 @@ import { job3 } from "../assets/images";
 import JobDetail from "./JobDetail";
 
 function JobCard() {
-  const { userData, setJobDetail } = useContext(InputContext);
-  const [jobDetailsOpen, setJobDetailsOpen] = useState(false);
+  const { userData, setJobDetail, setJobDetailsOpen, jobDetailsOpen } =
+    useContext(InputContext);
 
   const truncateText = (text, limit) => {
     if (text.length > limit) {
@@ -175,33 +175,33 @@ function JobCard() {
       {/* <div className=" absolute h-screen overflow-y-auto items-center flex justify-center ">
         {jobDetailsOpen && <JobDetail />}
       </div> */}
+      {/* 
+        Header card
+        -job title
+        - { componany website link with name of company on it ?  company website  && location }
+        Apply now button
+        
+      
+        # full job Desrciption
+        -Job title 
+        -location 
+        -job description (brief)
 
-      {jobDetailsOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl  max-h-full  mx-auto">
-            <button
-              onClick={() => setJobDetailsOpen(false)}
-              className=" top-2 right-2 hover:text-gray-700 hover:bg-gray-100 hover:rounded-sm px-1 py-1"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <JobDetail />
-          </div>
-        </div>
-      )}
+        # key Responsibility:
+         -Design this and that
+
+         #reuired skill and requirement :
+          -Bachelor’s degree in Computer Science, Engineering, or a related field (or equivalent practical experience).
+
+         # Preferred skills 
+         -Experience with cloud platforms (e.g., AWS, Azure, Google Cloud).
+
+         #Job type: Hybrid
+         
+
+      
+      */}
+      {jobDetailsOpen && <JobDetail />}
     </div>
   );
 }
