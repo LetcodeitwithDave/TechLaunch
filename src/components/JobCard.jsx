@@ -4,8 +4,13 @@ import { job3 } from "../assets/images";
 import JobDetail from "./JobDetail";
 
 function JobCard() {
-  const { userData, setJobDetail, setJobDetailsOpen, jobDetailsOpen } =
-    useContext(InputContext);
+  const {
+    userData,
+    setJobDetail,
+    jobDetail,
+    setJobDetailsOpen,
+    jobDetailsOpen,
+  } = useContext(InputContext);
 
   const truncateText = (text, limit) => {
     if (text.length > limit) {
@@ -19,10 +24,11 @@ function JobCard() {
     setJobDetailsOpen(!jobDetailsOpen);
   };
 
-  const jobDetail = (index) => {
+  const jobFunction = (index) => {
     setJobDetail(userData[index]);
     setJobDetailsOpen(!jobDetailsOpen);
-    console.log("each job data -> ", userData[index]);
+    console.log("each job data  in jobdetails -> ", jobDetail);
+    console.log("this is the lenght of job detail -> ", jobDetail.length);
   };
   return (
     <div className="">
@@ -31,7 +37,7 @@ function JobCard() {
           <div key={index} className="py-2">
             {/* it starts here */}
             <div
-              onClick={() => jobDetail(index)}
+              onClick={() => jobFunction(index)}
               className="  max-w-4xl p-6 flex flex-row gap-4  rounded-lg border border-gray-300 bg-white"
             >
               {/* image */}
@@ -99,7 +105,7 @@ function JobCard() {
         <div className="">
           <div
             onClick={() => test()}
-            className=" p-6 flex flex-row gap-4  rounded-lg border border-gray-300 bg-white"
+            className=" cursor-pointer p-6 flex flex-row gap-4  rounded-lg border border-gray-300 bg-white"
           >
             <div>
               <img
