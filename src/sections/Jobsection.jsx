@@ -4,7 +4,7 @@ import { JobCard, JobDetail, Filter, ProfileCard } from "../components";
 function Jobsection() {
   return (
     <div className=" flex  gap-6 ">
-      <div className=" justify-start hidden ml-6 h-screen lg:block overflow-y-auto sticky top-0">
+      <div className=" justify-start hidden ml-6 h-screen md:block overflow-y-auto sticky top-0">
         <Filter />
       </div>
 
