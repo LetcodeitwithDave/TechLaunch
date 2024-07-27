@@ -17,7 +17,7 @@ function LandingPage() {
         <LandingHero />
       </section>
 
-      <section className=" mt-11 pb-20">
+      <section className=" mt-6 pb-20">
         <OfferSection />
       </section>
       <div className=" px-12">
