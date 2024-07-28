@@ -6,6 +6,7 @@ import { FilterContext } from "../authcontext/filterContext";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
+  const [done, setDone] = useState(false);
   const [getLocation, setGetLocation] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [completedQuery, setCompletedQuery] = useState("");
@@ -66,6 +67,7 @@ function Input() {
         ? `${searchInput} in ${getLocation}`
         : searchInput || "Django developer";
       setCompletedQuery(query);
+      setDone(true);
     }
   };
 
@@ -75,10 +77,12 @@ function Input() {
       ? `${searchInput} in ${getLocation}`
       : searchInput || "Django developer";
     setCompletedQuery(query);
+    setDone(true);
   };
 
   // get data from child component- DropDown
   const handleFilterSelect = (filterCategory, filter) => {
+    console.log("mobile handlefilter -> ", selectedFilters);
     setSelectedFilters((prevFilter) => ({
       ...prevFilter,
       [filterCategory]: filter, //key : value from Dropdown component
@@ -153,46 +157,51 @@ function Input() {
       </div>
 
       {/* drropdown */}
-      <div className=" md:hidden flex flex-row gap-1 mt-4">
-        <Dropdown
-          title="Date Posted"
-          displayOptions={[
-            "All day",
-            "Past 24 hours",
-            "Past 3days",
-            "Past week",
-            "Past month",
-          ]}
-          options={["all", "today", "3days", "week", "month"]}
-          onFilterSelect={(filter) => handleFilterSelect("date_posted", filter)}
-        />
+      {done && (
+        <div className=" md:hidden flex flex-row flex-wrap gap-1 mt-4">
+          <Dropdown
+            title="Date Posted"
+            displayOptions={[
+              "All day",
+              "Past 24 hours",
+              "Past 3days",
+              "Past week",
+              "Past month",
+            ]}
+            options={["all", "today", "3days", "week", "month"]}
+            onFilterSelect={(filter) =>
+              handleFilterSelect("date_posted", filter)
+            }
+          />
 
-        <Dropdown
-          title="Job Type"
-          displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
-          options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
-          onFilterSelect={(filter) =>
-            handleFilterSelect("employment_types", filter)
-          }
-        />
+          <Dropdown
+            title="Job Type"
+            displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
+            options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
+            onFilterSelect={(filter) =>
+              handleFilterSelect("employment_types", filter)
+            }
+          />
 
-        <Dropdown
+          {/* <Dropdown
           title="Company"
           displayOptions={["Full-time", "Contract", "Part-time", "Intern"]}
           options={["FULLTIME", "CONTRACTOR", "PARTTIME", "INTERN"]}
           onFilterSelect={(filter) =>
             handleFilterSelect("employment_types", filter)
           }
-        />
-        <CompanyFilter
-          isLoading={isLoading}
-          title="Company Type"
-          query={completedQuery} //send completed query
-          onFilterSelect={(filter) =>
-            handleFilterSelect("company_types", filter)
-          }
-        />
-      </div>
+        /> */}
+
+          <CompanyFilter
+            isLoading={isLoading}
+            title="Company Type"
+            query={completedQuery} //send completed query
+            onFilterSelect={(filter) =>
+              handleFilterSelect("company_types", filter)
+            }
+          />
+        </div>
+      )}
     </div>
   );
 }
