@@ -6,7 +6,7 @@ import { FilterContext } from "../authcontext/filterContext";
 
 function Input() {
   const [searchInput, setSearchInput] = useState("");
-  const [done, setDone] = useState(false);
+  const [doneTyping, setDoneTyping] = useState(false);
   const [getLocation, setGetLocation] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [completedQuery, setCompletedQuery] = useState("");
@@ -67,7 +67,7 @@ function Input() {
         ? `${searchInput} in ${getLocation}`
         : searchInput || "Django developer";
       setCompletedQuery(query);
-      setDone(true);
+      setDoneTyping(true);
     }
   };
 
@@ -77,7 +77,7 @@ function Input() {
       ? `${searchInput} in ${getLocation}`
       : searchInput || "Django developer";
     setCompletedQuery(query);
-    setDone(true);
+    setDoneTyping(true);
   };
 
   // get data from child component- DropDown
@@ -157,7 +157,7 @@ function Input() {
       </div>
 
       {/* drropdown */}
-      {done && (
+      {doneTyping && (
         <div className=" md:hidden flex flex-row flex-wrap gap-1 mt-4">
           <Dropdown
             title="Date Posted"
