@@ -27,7 +27,7 @@ function LandingHeader() {
     <div>
       <header className=" bg-white">
         {isAuthenticated ? (
-          <nav className="relative mx-auto px-2 sm:px-6 lg:px-8 justify-between  flex items-center  ">
+          <nav className="relative mx-auto gap-8 px-2 sm:px-6 lg:px-8   flex items-center  ">
             <div className="flex ml-0 ">
               <img src={paperPlane1} height={40} width={50} className="mt-2 " />
               <h1 className=" text-black font-robotoBold  text-md mt-4">
@@ -35,50 +35,24 @@ function LandingHeader() {
               </h1>
             </div>
 
-            <div className=" hidden md:block ml-9">
+            <div className="">
               {/* modification for the menu */}
               {/* flex to col in smaller screens and row on larger */}
 
-              <ul className="sm:flex flex-row justify-center gap-7 font-robotoRegular">
-                {authLink.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      className={
-                        item.active
-                          ? "underline underline-offset-8 decoration-blue-400 decoration-2 text-black px-3 py-2 rounded-md text-sm"
-                          : " text-black hover:underline hover:underline-offset-8 hover:decoration-blue-400 hover:decoration-2 hover:text-gray-700 px-3 py-2 rounded-md text-sm"
-                      }
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+              <ul className="sm:flex  gap-7 font-robotoRegular">
+                <li>
+                  <a
+                    href="#"
+                    className={
+                      "underline underline-offset-8 decoration-blue-400 decoration-2 text-black px-3 py-2 rounded-md text-sm"
+                    }
+                  >
+                    Job Offer
+                  </a>
+                </li>
               </ul>
             </div>
-            <div className="  flex items-center space-x-3 ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                onClick={toggleSideNav}
-                className="lucide lucide-align-justify md:hidden"
-              >
-                <line x1="3" x2="21" y1="6" y2="6" />
-                <line x1="3" x2="21" y1="12" y2="12" />
-                <line x1="3" x2="21" y1="18" y2="18" />
-              </svg>
 
-              <button className=" hidden md:block  gap-6 bg-buttonBackground  px-2 py-2 mt-0 rounded-md text-white font-robotoRegular">
-                Post a Job
-              </button>
-            </div>
             {/* side Navigation menu */}
 
             <div
