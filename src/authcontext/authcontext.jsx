@@ -2,7 +2,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 
 export const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
@@ -53,8 +52,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (isLoading) {
-      updateToken();
+    // can i sayif authenticated and if still locading
+    if (isAuthenticated) {
+      if (isLoading) {
+        updateToken();
+      }
     }
     const time = setInterval(() => {
       if (isAuthenticated) {
@@ -78,7 +80,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
-      {isLoading ? null : children}
+      {children}
     </AuthContext.Provider>
   );
 };
