@@ -28,12 +28,19 @@ function LandingHeader() {
       <header className=" bg-white">
         {isAuthenticated ? (
           <nav className="relative mx-auto gap-8 px-2 sm:px-6 lg:px-8   flex items-center  ">
-            <div className="flex ml-0 ">
-              <img src={paperPlane1} height={40} width={50} className="mt-2 " />
-              <h1 className=" text-black font-robotoBold  text-md mt-4">
-                TechLaunch
-              </h1>
-            </div>
+            <a href="/">
+              <div className="flex ml-0 ">
+                <img
+                  src={paperPlane1}
+                  height={40}
+                  width={50}
+                  className="mt-2 "
+                />
+                <h1 className=" text-black font-robotoBold  text-md mt-4">
+                  TechLaunch
+                </h1>
+              </div>
+            </a>
 
             <div className="">
               {/* modification for the menu */}
@@ -91,18 +98,20 @@ function LandingHeader() {
           </nav>
         ) : (
           <nav className="mx-auto px-2 sm:px-6 lg:px-8  flex justify-between items-center  ">
-            <div className="flex ml-0">
-              <img
-                src={paperPlane1}
-                height={52}
-                width={60}
-                className=" mt-5"
-                // className="px-0  h-20 w-[120px] md:h-[90px] md:w-[120px] bg-transparent"
-              />
-              <h1 className=" text-black font-robotoBold  text-xl mt-8">
-                TechLaunch
-              </h1>
-            </div>
+            <a href="/">
+              <div className="flex ml-0">
+                <img
+                  src={paperPlane1}
+                  height={52}
+                  width={60}
+                  className=" mt-5"
+                  // className="px-0  h-20 w-[120px] md:h-[90px] md:w-[120px] bg-transparent"
+                />
+                <h1 className=" text-black font-robotoBold  text-xl mt-8">
+                  TechLaunch
+                </h1>
+              </div>
+            </a>
 
             <div className=" hidden md:block">
               {/* modification for the menu */}
