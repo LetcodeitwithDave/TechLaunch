@@ -61,8 +61,7 @@ function Input() {
     if (completedQuery) {
       fetchData(completedQuery); //pass query to fetchData
     } else {
-      // for the display of job on load
-
+      // for the display of job on pageload
       const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
       const savedJob = localStorage.getItem("savedJob");
       console.log("the else for localstarage is working");
@@ -75,7 +74,7 @@ function Input() {
 
             setUserData(JSON.parse(savedJob));
             setIsLoading(false);
-          }, 3000);
+          }, 2000);
           return () => clearInterval(timeLoader);
         }
       } else {
