@@ -69,8 +69,15 @@ function Input() {
       const lastFetchTime = localStorage.getItem("lastFetchTime");
 
       if (savedJob && lastFetchTime && Date.now() - lastFetchTime < oneDay) {
-        setUserData(JSON.parse(savedJob));
-        setIsLoading(false);
+        if (isLoading) {
+          const timeLoader = setInterval(() => {
+            setIsLoading(true);
+
+            setUserData(JSON.parse(savedJob));
+            setIsLoading(false);
+          }, 3000);
+          return () => clearInterval(timeLoader);
+        }
       } else {
         fetchData("developer");
       }
