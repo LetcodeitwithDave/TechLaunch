@@ -3,19 +3,21 @@ import { JobCard, JobDetail, Filter, ProfileCard } from "../components";
 import { InputContext } from "../authcontext/inputContext";
 
 function Jobsection() {
-  const { setIsLoading, isLoading } = useContext(InputContext);
+  const { setIsLoading, isLoading, userData } = useContext(InputContext);
   return (
-    <div className=" flex  ">
+    <div className=" flex gap-8   ">
       <div className=" justify-start hidden ml-6 h-screen md:block overflow-y-auto sticky top-0">
         <Filter />
       </div>
 
-      <div
-        className={`flex ${
-          isLoading ? " mx-auto lg:mx-auto" : "mx-4 lg:mx-0"
-        } flex-col mb-auto`}
-      >
-        <JobCard />
+      <div>
+        <div className=" mb-2">
+          <span className=" text-textColor">Showing: </span>
+          {!isLoading && <span>{userData.length} Jobs </span>}
+        </div>
+        <div className={`flex  mx-4 lg:mx-0 flex-col `}>
+          <JobCard />
+        </div>
       </div>
 
       {/* <div className="justify-end hidden lg:block ml-auto mr-6   ">
