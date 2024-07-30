@@ -47,7 +47,6 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.log("something went wrong");
-      logout();
     }
   };
 
@@ -64,7 +63,7 @@ export const AuthProvider = ({ children }) => {
       }
     }, 870000);
     return () => clearInterval(time);
-  }, [isAuthenticated]);
+  }, [isAuthenticated, isLoading]);
 
   // // get access_token if available
   // useEffect(() => {
