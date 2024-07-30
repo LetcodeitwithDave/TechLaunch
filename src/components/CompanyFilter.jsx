@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-function CompanyFilter({ isLoading, title, query, onFilterSelect }) {
+function CompanyFilter({ title, query, onFilterSelect }) {
   // const queryRef = useRef(query); //store search text
   // const [timeoutId, setTimeoutId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
