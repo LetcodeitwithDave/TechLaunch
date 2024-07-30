@@ -123,7 +123,7 @@ function JobDetail() {
           </div>
         </div>
       ) : (
-        <div className=" fixed md:border md:border-red-400    inset-0 flex flex-col items-center justify-center z-50 bg-black bg-opacity-40">
+        <div className=" fixed  inset-0 flex flex-col items-center justify-center z-50 bg-black bg-opacity-40">
           <div className="bg-white p-8 rounded-t-lg shadow-lg  w-1/2 relative">
             <button
               onClick={() => setJobDetailsOpen(!jobDetailsOpen)}
