@@ -5,6 +5,7 @@ export const InputContext = createContext();
 
 const InputProvider = ({ children }) => {
   const [userData, setUserData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [jobDetail, setJobDetail] = useState([]);
   const [jobDetailsOpen, setJobDetailsOpen] = useState(false);
   return (
@@ -16,6 +17,8 @@ const InputProvider = ({ children }) => {
         setJobDetail,
         jobDetailsOpen,
         setJobDetailsOpen,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}
