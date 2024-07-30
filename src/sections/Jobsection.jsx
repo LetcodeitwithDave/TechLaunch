@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { JobCard, JobDetail, Filter, ProfileCard } from "../components";
+import { InputContext } from "../authcontext/inputContext";
 
 function Jobsection() {
+  const { setIsLoading, isLoading } = useContext(InputContext);
   return (
-    <div className=" flex  gap-6 ">
+    <div className=" flex  ">
       <div className=" justify-start hidden ml-6 h-screen md:block overflow-y-auto sticky top-0">
         <Filter />
       </div>
 
-      <div className="flex mx-4 lg:mx-0 flex-col ">
+      <div
+        className={`flex ${
+          isLoading ? " mx-auto lg:mx-auto" : "mx-4 lg:mx-0"
+        } flex-col mb-auto`}
+      >
         <JobCard />
       </div>
 
