@@ -230,7 +230,7 @@ function JobDetail() {
               )}
               {jobDetail.job_highlights &&
                 jobDetail.job_highlights.Responsibilities?.map((keys) => (
-                  <div className=" flex ">
+                  <div className=" flex " key={keys.id}>
                     <button>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
