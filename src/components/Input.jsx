@@ -8,7 +8,7 @@ function Input() {
   const [searchInput, setSearchInput] = useState("");
   const [doneTyping, setDoneTyping] = useState(false);
   const [getLocation, setGetLocation] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+
   const [completedQuery, setCompletedQuery] = useState("");
   // const [selectedFilters, setSelectedFilters] = useState({
   //   date_posted: "",
@@ -16,14 +16,14 @@ function Input() {
   //   company_types: "",
   // });
   const { selectedFilters, setSelectedFilters } = useContext(FilterContext);
-  const { setUserData } = useContext(InputContext);
+  const { setUserData, setIsLoading, isLoading } = useContext(InputContext);
 
   console.log(searchInput);
 
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "8ea29b4f1amshb945df4cfa16601p18b0b1jsnd5b1db74b6f4",
+      "x-rapidapi-key": "86363862bbmsh9eb0d6ad11b97e8p1bec71jsn7419c6a18d1b",
       "x-rapidapi-host": "jsearch.p.rapidapi.com",
     },
   };
@@ -41,12 +41,14 @@ function Input() {
         options
       );
       console.log(response);
-      setIsLoading(false);
       if (response.ok) {
         const result = await response.json();
-
         console.log(result.data);
         setUserData(result.data);
+        setIsLoading(false);
+
+        localStorage.setItem("savedJob", JSON.stringify(result.data));
+        localStorage.setItem("lastFetchTime", Date.now());
       } else {
         console.log("somthing went wrong with fetch");
       }
@@ -58,6 +60,20 @@ function Input() {
   useEffect(() => {
     if (completedQuery) {
       fetchData(completedQuery); //pass query to fetchData
+    } else {
+      // for the display of job on load
+
+      const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
+      const savedJob = localStorage.getItem("savedJob");
+      console.log("the else for localstarage is working");
+      const lastFetchTime = localStorage.getItem("lastFetchTime");
+
+      if (savedJob && lastFetchTime && Date.now() - lastFetchTime < oneDay) {
+        setUserData(JSON.parse(savedJob));
+        setIsLoading(false);
+      } else {
+        fetchData("developer");
+      }
     }
   }, [completedQuery, selectedFilters]); // Re-fetch data when filter & completed change
 
@@ -92,47 +108,8 @@ function Input() {
   return (
     <div className="flex flex-col items-center justify-center p-4 my-2">
       <div className=" flex items-center border rounded-full bg-white  w-full max-w-3xl shadow-lg">
-        {/* location input */}
-        <div className=" flex items-center border-r  border-gray-300 p-2 w-full">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            className="lucide lucide-map-pin w-6 h-6 text-gray-500 mr-2 "
-          >
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-          <input
-            type="text"
-            id="locationInput"
-            name="locationInput"
-            value={getLocation}
-            onChange={(e) => setGetLocation(e.target.value)}
-            onKeyDown={handleKeyPress}
-            className="w-full p-2 outline-none"
-            placeholder="City, state (e.g., Berlin, Germany)"
-          />
-        </div>
-
         {/* job search input */}
-        <div className="  flex items-center w-full p-2">
-          <input
-            type="text"
-            id="searchInput"
-            name="searchInput"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={handleKeyPress}
-            className=" w-full p-2 outline-none"
-            placeholder="Job title, keywords, or company"
-          />
+        <div className="  flex items-center border-gray-300 border-r w-full p-2">
           <button
             type="submit"
             onClick={handleButtonclick}
@@ -153,6 +130,46 @@ function Input() {
               />
             </svg>
           </button>
+          <input
+            type="text"
+            id="searchInput"
+            name="searchInput"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={handleKeyPress}
+            className=" w-full p-2 outline-none"
+            placeholder="Job title, keywords, or company"
+          />
+        </div>
+
+        {/* location input */}
+        <div className=" flex items-center p-2 w-full">
+          <input
+            type="text"
+            id="locationInput"
+            name="locationInput"
+            value={getLocation}
+            onChange={(e) => setGetLocation(e.target.value)}
+            onKeyDown={handleKeyPress}
+            className="w-full p-2 outline-none"
+            placeholder="City, state (e.g., Berlin, Germany)"
+          />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className="lucide lucide-map-pin w-6 h-6 text-gray-500 mr-2 "
+          >
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
         </div>
       </div>
 
@@ -193,7 +210,7 @@ function Input() {
         /> */}
 
           <CompanyFilter
-            isLoading={isLoading}
+            // isLoading={isLoading}
             title="Company Type"
             query={completedQuery} //send completed query
             onFilterSelect={(filter) =>
