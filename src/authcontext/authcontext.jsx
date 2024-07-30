@@ -52,10 +52,8 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // can i sayif authenticated and if still locading
-    if (isAuthenticated) {
-      if (isLoading) {
-        updateToken();
-      }
+    if (isAuthenticated && isLoading) {
+      updateToken();
     }
     const time = setInterval(() => {
       if (isAuthenticated) {
@@ -64,18 +62,6 @@ export const AuthProvider = ({ children }) => {
     }, 870000);
     return () => clearInterval(time);
   }, [isAuthenticated, isLoading]);
-
-  // // get access_token if available
-  // useEffect(() => {
-  //   const token = localStorage.getItem("access_token");
-  //   console.log("isAuthenticated data in authcontext", token);
-  //   if (token) {
-  //     setIsAuthenticated(true);
-  //   } else {
-  //     setIsAuthenticated(false);
-  //   }
-  //   console.log("isAuthenticated state: ", isAuthenticated);
-  // }, []);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
