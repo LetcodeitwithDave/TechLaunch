@@ -45,9 +45,7 @@ function Filter() {
               >
                 <div
                   className={`w-4 h-4 border ${
-                    isClicked && item.label == isClicked
-                      ? "bg-blue-500"
-                      : console.log("something is wrong")
+                    isClicked && item.label == isClicked && "bg-blue-500"
                   }  border-gray-400 rounded-sm `}
                 ></div>
                 <div className=" text-xs">{item.label}</div>
@@ -77,9 +75,7 @@ function Filter() {
               >
                 <div
                   className={`w-4 h-4 border ${
-                    jobClicked && item.label == jobClicked
-                      ? "bg-blue-500"
-                      : console.log("something is wrong")
+                    jobClicked && item.label == jobClicked && "bg-blue-500"
                   }  border-gray-400 rounded-sm `}
                 ></div>
                 <div className=" text-xs">{item.label}</div>
