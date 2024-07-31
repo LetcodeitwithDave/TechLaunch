@@ -30,6 +30,7 @@ module.exports = {
         customColor1: '#007BFF',  // Custom color (lightblue)
       },
       colors: {
+        test :  '#FAFAFB',
         pageBackground : '#F8F9FA',
         heroBackground: '#F2F2F2',
         textColor: '#333333',
