@@ -11,11 +11,11 @@ function Jobsection() {
       </div>
 
       <div>
-        <div className=" mb-2">
-          <span className=" text-textColor">Showing: </span>
+        <div className=" mb-2 font-robotoRegular">
+          <span className=" text-gray-600 font-robotoRegular">Showing: </span>
           {!isLoading && <span>{userData.length} Jobs </span>}
         </div>
-        <div className={`flex  mx-4 lg:mx-0 flex-col `}>
+        <div className={`flex   mx-4 lg:mx-0 flex-col `}>
           <JobCard />
         </div>
       </div>
