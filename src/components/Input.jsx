@@ -74,7 +74,7 @@ function Input() {
 
             setUserData(JSON.parse(savedJob));
             setIsLoading(false);
-          }, 2000);
+          }, 1000);
           return () => clearInterval(timeLoader);
         }
       } else {
@@ -89,6 +89,7 @@ function Input() {
         ? `${searchInput} in ${getLocation}`
         : searchInput || "Django developer";
       setCompletedQuery(query);
+      setIsLoading(true);
       setDoneTyping(true);
     }
   };
@@ -99,6 +100,7 @@ function Input() {
       ? `${searchInput} in ${getLocation}`
       : searchInput || "Django developer";
     setCompletedQuery(query);
+    setIsLoading(true);
     setDoneTyping(true);
   };
 
