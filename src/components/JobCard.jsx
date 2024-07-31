@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { InputContext } from "../authcontext/inputContext";
-import { job3 } from "../assets/images";
+import { job3, nocompanyimage } from "../assets/images";
 import JobDetail from "./JobDetail";
+import { briefcase } from "../../public";
 
 function JobCard() {
   const {
@@ -55,7 +56,7 @@ function JobCard() {
           <div key={index} className="py-2">
             <div
               onClick={() => jobFunction(index)}
-              className="max-w-4xl p-6 flex flex-col gap-4 rounded-lg bg-white"
+              className="max-w-4xl p-6 flex flex-col gap-4 rounded-lg  hover:shadow-lg bg-white"
             >
               <div className=" flex gap-4">
                 <div className="flex-shrink-0 w-16 h-16 p-2 bg-heroBackground  rounded-md">
@@ -67,7 +68,7 @@ function JobCard() {
                     />
                   ) : (
                     <img
-                      src={job3}
+                      src={nocompanyimage}
                       alt="job image"
                       className="w-full h-full object-cover rounded-md"
                     />
@@ -104,36 +105,6 @@ function JobCard() {
               </div>
 
               <div className=" flex-1">
-                {/* <div className="">
-                  {job.job_highlights &&
-                    job.job_highlights.Responsibilities?.slice(0, 3).map(
-                      (item, i) => (
-                        <div key={i} className="flex items-center">
-                          <button>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="lucide lucide-dot text-gray-900"
-                            >
-                              <circle cx="12.1" cy="12.1" r="1" />
-                            </svg>
-                          </button>
-                          <p className="font-sans text-gray-600">
-                            {truncateText(item, 120)}
-                          </p>
-                          <br />
-                        </div>
-                      )
-                    )}
-                </div> */}
-
                 <div className="">
                   {job.job_description && (
                     <div className="flex items-center">
@@ -143,6 +114,43 @@ function JobCard() {
                       <br />
                     </div>
                   )}
+                </div>
+              </div>
+
+              <div className=" flex flex-col gap-4 md:gap-0 md:flex-row md:justify-between md:items-center">
+                <div className=" flex gap-2 items-center text-gray-600 max-w-md bg-gray-100 p-2 rounded-lg text-xs font-robotoRegular">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    class="lucide lucide-briefcase-business"
+                  >
+                    <path d="M12 12h.01" />
+                    <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                    <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+                    <rect width="20" height="14" x="2" y="6" rx="2" />
+                  </svg>
+
+                  {job.job_employment_type}
+                </div>
+                <div className=" flex  gap-4  items-center">
+                  <button className=" bg-gray-100 py-2 px-4 text-sm rounded-md text-gray-600 font-robotoRegular  hover:bg-gray-200 ">
+                    View Details
+                  </button>
+                  <a
+                    href={job.apply_options.map((apply) => apply.apply_link)}
+                    target="_blank"
+                  >
+                    <button className=" bg-buttonBackground hover:bg-blue-600 text-white font-robotoRegular text-sm px-10 py-2 rounded-md ">
+                      Apply Now
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
