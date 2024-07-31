@@ -3,8 +3,11 @@ import { InputContext } from "../authcontext/inputContext";
 import { job3, nocompanyimage } from "../assets/images";
 import JobDetail from "./JobDetail";
 import { briefcase } from "../../public";
+import JobDetailsPage from "../../pages/JobDetailsPage";
+import { useNavigate } from "react-router-dom";
 
 function JobCard() {
+  const navigate = useNavigate();
   const {
     userData,
     setJobDetail,
@@ -23,6 +26,7 @@ function JobCard() {
 
   const jobFunction = (index) => {
     setJobDetail(userData[index]);
+    localStorage.setItem("jobdetail", JSON.stringify(userData[index]));
     setJobDetailsOpen(!jobDetailsOpen);
     console.log("each job data in jobdetails -> ", jobDetail);
     console.log("this is the length of job detail -> ", jobDetail.length);
@@ -158,7 +162,7 @@ function JobCard() {
         ))
       )}
 
-      {jobDetailsOpen && <JobDetail />}
+      {jobDetailsOpen && navigate("/jobpage")}
     </div>
   );
 }
