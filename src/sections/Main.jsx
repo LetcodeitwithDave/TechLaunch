@@ -10,7 +10,7 @@ function Main() {
   return (
     <InputProvider>
       <FilterProvider>
-        <main className="bg-heroBackground">
+        <main className="bg-test">
           <section>
             <LandingHeader />
           </section>
