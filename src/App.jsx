@@ -16,39 +16,47 @@ import { AuthProvider, useAuth } from "./authcontext/authcontext";
 import ProtectedRoute from "./authcontext/ProtectedRoute";
 import { Main, Login, SignUp } from "./sections";
 import Unauthourized from "./authcontext/Unauthourized";
+import JobDetailsPage from "../pages/JobDetailsPage";
 import Know from "../public/Know";
-
+import { InputProvider } from "./authcontext/inputContext";
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route
-            element={<Unauthourized children={<Login />} />}
-            path="/login"
-          />
+      <InputProvider>
+        <Router>
+          <Routes>
+            <Route
+              element={<Unauthourized children={<Login />} />}
+              path="/login"
+            />
 
-          <Route
-            element={<Unauthourized children={<SignUp />} />}
-            path="/signup"
-          />
+            <Route
+              element={<Unauthourized children={<SignUp />} />}
+              path="/signup"
+            />
 
-          <Route
-            element={<Unauthourized children={<LandingPage />} />}
-            path="/"
-          />
+            <Route
+              element={<Unauthourized children={<LandingPage />} />}
+              path="/"
+            />
 
-          <Route
-            element={<ProtectedRoute children={<Know />} />}
-            path="/know"
-          />
+            <Route
+              element={<ProtectedRoute children={<Know />} />}
+              path="/know"
+            />
 
-          <Route
-            element={<ProtectedRoute children={<Main />} />}
-            path="/home"
-          />
-        </Routes>
-      </Router>
+            <Route
+              element={<ProtectedRoute children={<Main />} />}
+              path="/home"
+            />
+
+            <Route
+              element={<ProtectedRoute children={<JobDetailsPage />} />}
+              path="/jobpage"
+            />
+          </Routes>
+        </Router>
+      </InputProvider>
     </AuthProvider>
     // </div>
   );
