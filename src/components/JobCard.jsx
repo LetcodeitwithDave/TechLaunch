@@ -106,7 +106,12 @@ function JobCard() {
                   {job.job_employment_type}
                 </div>
                 <div className="flex gap-4 items-center">
-                  <button className="bg-gray-100 py-2 px-4 text-sm rounded-md text-gray-600 font-robotoRegular hover:bg-gray-200">
+                  <button
+                    onClick={() =>
+                      navigate(`/jobpage/${userData[index].job_id}`)
+                    }
+                    className="bg-gray-100 py-2 px-4 text-sm rounded-md text-gray-600 font-robotoRegular hover:bg-gray-200"
+                  >
                     View Details
                   </button>
                   <a
