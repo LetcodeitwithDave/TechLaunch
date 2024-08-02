@@ -5,6 +5,7 @@ import job3 from './job3.jpg'
 import background from './background1.jpg'
 import pxfuel from './pxfuel.jpg'
 import nocompanyimage from './nocompanyimage.webp'
+import jobBackgroundImage from './jobBackgroundImage.jpg'
 
 export {
     headerLogo,
@@ -13,5 +14,6 @@ export {
     job3,
     background,
     pxfuel,
-    nocompanyimage
+    nocompanyimage,
+    jobBackgroundImage
 }
