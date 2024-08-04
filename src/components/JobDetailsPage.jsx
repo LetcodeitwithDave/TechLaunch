@@ -4,7 +4,7 @@ import { JobContext } from "../authcontext/JobDetailContext";
 import { job3, jobBackgroundImage } from "../assets/images";
 import BackButton from "./BackButton";
 import { nocompanyimage } from "../assets/images";
-
+import JobOffer from "./JobOffer";
 function JobDetailsPage() {
   const { jobInfo } = useContext(JobContext);
 
@@ -40,19 +40,37 @@ function JobDetailsPage() {
                 alt=""
               />
               <div className=" mx-4">
-                <div className="flex-shrink-0 w-20 h-20 p-1  top-9 -mt-9 bg-heroBackground rounded-md">
+                <div className="flex-shrink-0 w-16 h-16 p-1  top-9 -mt-9 bg-heroBackground rounded-md">
                   <img
                     src={jobInfo.employer_logo || nocompanyimage}
                     alt="job image"
                     className="w-full h-full object-cover rounded-md "
                   />
                 </div>
-                <div className=" flex  justify-between items-center mt-8">
-                  <h1 className="mb-2 text-xl md:text-3xl font-robotoMedium  text-textColor">
-                    {jobInfo.job_title}
-                  </h1>
 
-                  <button className="transition duration-300 hover:bg-blue-600 px-4 py-2 rounded-md mt-4 bg-green-400 text-white font-robotoMedium">
+                <div className=" flex  justify-between items-center mt-8">
+                  <div className=" flex flex-col">
+                    <h1 className="text-xl gap-2 md:text-3xl font-robotoMedium  text-textColor">
+                      {jobInfo.job_title}
+                    </h1>
+
+                    <div className="flex space-x-1 mt-0 text-gray-600 font-robotoRegular text-sm">
+                      <p>{jobInfo.employer_name}</p>
+                      {jobInfo.job_country && <span>•</span>}
+                      <p>
+                        {jobInfo.job_country && jobInfo.job_city
+                          ? `${jobInfo.job_city}, ${jobInfo.job_country}`
+                          : jobInfo.job_country}
+                      </p>
+                      {jobInfo.job_posted_at_timestamp && (
+                        <span>
+                          • {timePosted(jobInfo.job_posted_at_timestamp)}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <button className="transition duration-300 hover:bg-blue-600 px-4 py-2 rounded-md mt-4 bg-buttonBackground text-white font-robotoMedium">
                     <a
                       href={jobInfo.apply_options.map(
                         (apply) => apply.apply_link
@@ -63,25 +81,20 @@ function JobDetailsPage() {
                   </button>
                 </div>
 
-                <div className="flex space-x-1 mt-0 text-gray-600 font-robotoRegular text-sm">
-                  <p>{jobInfo.employer_name}</p>
-                  {jobInfo.job_country && <span>•</span>}
-                  <p>
-                    {jobInfo.job_country && jobInfo.job_city
-                      ? `${jobInfo.job_city}, ${jobInfo.job_country}`
-                      : jobInfo.job_country}
-                  </p>
-                  {jobInfo.job_posted_at_timestamp && (
-                    <span>• {timePosted(jobInfo.job_posted_at_timestamp)}</span>
-                  )}
-                </div>
+                <JobOffer jobInfo={jobInfo} />
 
-                <div
-                  className="mt-8"
-                  dangerouslySetInnerHTML={{
-                    __html: jobInfo.job_description,
-                  }}
-                />
+                <div className=" mt-10">
+                  <div className=" font-robotoMedium text-textColor text-xl">
+                    About The Job
+                  </div>
+
+                  <div
+                    className=" mt-2 font-robotoRegularm text-textColor"
+                    dangerouslySetInnerHTML={{
+                      __html: jobInfo.job_description,
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
