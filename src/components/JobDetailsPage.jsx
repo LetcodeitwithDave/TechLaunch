@@ -80,8 +80,9 @@ function JobDetailsPage() {
                     </a>
                   </button>
                 </div>
-
-                <JobOffer jobInfo={jobInfo} />
+                <div className="  ">
+                  <JobOffer jobInfo={jobInfo} />
+                </div>
 
                 <div className=" mt-10">
                   <div className=" font-robotoMedium text-textColor text-xl">
@@ -89,7 +90,7 @@ function JobDetailsPage() {
                   </div>
 
                   <div
-                    className=" mt-2 font-robotoRegularm text-textColor"
+                    className=" mt-2 font-robotoRegularm text-gray-600"
                     dangerouslySetInnerHTML={{
                       __html: jobInfo.job_description,
                     }}
