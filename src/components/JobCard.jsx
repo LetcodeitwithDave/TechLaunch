@@ -8,7 +8,7 @@ function JobCard() {
   const navigate = useNavigate();
   const { userData, jobDetailsOpen, setJobDetailsOpen, isLoading } =
     useContext(InputContext);
-  const { setJobInfo } = useContext(JobContext);
+  const { jobInfo, setJobInfo } = useContext(JobContext);
 
   const truncateText = (text, limit) => {
     if (text.length > limit) {
@@ -19,6 +19,7 @@ function JobCard() {
 
   const jobFunction = (index) => {
     setJobInfo(userData[index]);
+    console.log("this is job info -> ", jobInfo);
     setJobDetailsOpen(!jobDetailsOpen);
     navigate(`/jobpage/${userData[index].job_id}`);
   };
