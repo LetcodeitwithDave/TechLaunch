@@ -86,7 +86,7 @@ function JobCard() {
                 </p>
               </div>
               <div className="flex flex-col gap-4 md:gap-0 md:flex-row md:justify-between md:items-center">
-                <div className="flex gap-2 items-center text-gray-600 max-w-md bg-gray-100 p-2 rounded-lg text-xs font-robotoRegular">
+                <div className="flex gap-2 items-center text-gray-600 w-28 md:max-w-md bg-gray-100 p-2 rounded-lg text-xs font-robotoRegular">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -106,7 +106,7 @@ function JobCard() {
                   </svg>
                   {job.job_employment_type}
                 </div>
-                <div className="flex gap-4 items-center">
+                <div className="md:flex grid grid-cols-2 gap-4 items-center">
                   <button
                     onClick={() =>
                       navigate(`/jobpage/${userData[index].job_id}`)
@@ -115,15 +115,18 @@ function JobCard() {
                   >
                     View Details
                   </button>
-                  <a
+                  <button
                     href={job.apply_options.map((apply) => apply.apply_link)}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    className="bg-buttonBackground hover:bg-blue-600 text-white font-robotoRegular text-sm px-10 py-2 rounded-md"
                   >
-                    <button className="bg-buttonBackground hover:bg-blue-600 text-white font-robotoRegular text-sm px-10 py-2 rounded-md">
+                    <a
+                      href={job.apply_options.map((apply) => apply.apply_link)}
+                      target="_blank"
+                    >
                       Apply Now
-                    </button>
-                  </a>
+                    </a>
+                  </button>
                 </div>
               </div>
             </div>
