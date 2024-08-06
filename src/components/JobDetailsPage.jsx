@@ -102,7 +102,7 @@ function JobDetailsPage() {
                         {jobInfo.job_highlights.Qualifications && (
                           <div className="mt-4">
                             <h2 className="font-robotoMedium text-textColor text-lg">
-                              Qualifications and skiil set
+                              Qualifications and skill set
                             </h2>
                             <ul className="list-disc list-inside mt-4 leading-9">
                               {jobInfo.job_highlights.Qualifications.map(

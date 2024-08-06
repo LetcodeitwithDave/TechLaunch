@@ -17,6 +17,22 @@ function JobCard() {
     return text;
   };
 
+  const formatSalary = (jobInfo) => {
+    const minSalary = jobInfo.job_min_salary;
+    const maxSalary = jobInfo.job_max_salary;
+
+    if (jobInfo.job_min_salary > 999 && jobInfo.job_max_salary > 999) {
+      const minSalary = jobInfo.job_min_salary / 1000;
+      const maxSalary = jobInfo.job_max_salary / 1000;
+      const minValue = minSalary.toFixed(1).replace(/\.0/, "") + "k";
+      const maxValue = maxSalary.toFixed(1).replace(/\.0/, "") + "k";
+
+      return `${minValue} - ${maxValue}`;
+    } else {
+      return `$${minSalary} - $${maxSalary}`;
+    }
+  };
+
   const jobFunction = (index) => {
     setJobInfo(userData[index]);
     console.log("this is job info -> ", jobInfo);
@@ -86,26 +102,43 @@ function JobCard() {
                 </p>
               </div>
               <div className="flex flex-col gap-4 md:gap-0 md:flex-row md:justify-between md:items-center">
-                <div className="flex gap-2 items-center text-gray-600 w-28 md:max-w-md bg-gray-100 p-2 rounded-lg text-xs font-robotoRegular">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-briefcase-business"
-                  >
-                    <path d="M12 12h.01" />
-                    <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                    <path d="M22 13a18.15 18.15 0 0 1-20 0" />
-                    <rect width="20" height="14" x="2" y="6" rx="2" />
-                  </svg>
-                  {job.job_employment_type}
+                <div className=" flex gap-4">
+                  <div className="flex gap-2 items-center text-gray-600 w-28 md:max-w-md bg-gray-100 p-2 rounded-lg text-xs font-robotoRegular">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-briefcase-business"
+                    >
+                      <path d="M12 12h.01" />
+                      <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                      <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+                      <rect width="20" height="14" x="2" y="6" rx="2" />
+                    </svg>
+                    {job.job_employment_type}
+                  </div>
+
+                  <div className="">
+                    <div className=" ">
+                      {job.job_max_salary && job.job_min_salary ? (
+                        <div className=" items-center text-gray-600 w-28 md:max-w-md text-center bg-gray-100  p-2 rounded-lg text-md font-robotoRegular">
+                          {formatSalary(job)}
+                        </div>
+                      ) : (
+                        <div className=" items-center text-gray-600 w-28 md:max-w-md text-center bg-gray-100  p-2 rounded-lg text-md font-robotoRegular">
+                          TBD
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
+
                 <div className="md:flex grid grid-cols-2 gap-4 items-center">
                   <button
                     onClick={() =>
