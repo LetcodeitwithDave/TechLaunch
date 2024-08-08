@@ -1,7 +1,7 @@
 import React from "react";
 import { jobBackgroundImage } from "../assets/images";
 
-function JobOffer({ jobInfo }) {
+function JobOffer({ storedJob }) {
   const yearsOfExperince = (month) => {
     if (month > 12) {
       const value = month / 12;
@@ -10,12 +10,12 @@ function JobOffer({ jobInfo }) {
   };
 
   const formatSalary = () => {
-    const minSalary = jobInfo.job_min_salary;
-    const maxSalary = jobInfo.job_max_salary;
+    const minSalary = storedJob.job_min_salary;
+    const maxSalary = storedJob.job_max_salary;
 
-    if (jobInfo.job_min_salary > 999 && jobInfo.job_max_salary > 999) {
-      const minSalary = jobInfo.job_min_salary / 1000;
-      const maxSalary = jobInfo.job_max_salary / 1000;
+    if (storedJob.job_min_salary > 999 && storedJob.job_max_salary > 999) {
+      const minSalary = storedJob.job_min_salary / 1000;
+      const maxSalary = storedJob.job_max_salary / 1000;
       const minValue = minSalary.toFixed(1).replace(/\.0/, "") + "k";
       const maxValue = maxSalary.toFixed(1).replace(/\.0/, "") + "k";
 
@@ -33,9 +33,9 @@ function JobOffer({ jobInfo }) {
             Experience
           </div>
           <div className=" font-robotoMedium text-md text-textColor">
-            {(jobInfo.job_required_experience &&
+            {(storedJob.job_required_experience &&
               yearsOfExperince(
-                jobInfo.job_required_experience.required_experience_in_months
+                storedJob.job_required_experience.required_experience_in_months
               )) ||
               "Not specifed"}
           </div>
@@ -47,7 +47,7 @@ function JobOffer({ jobInfo }) {
             Employment Type
           </div>
           <div className=" font-robotoMedium text-md text-textColor">
-            {jobInfo.job_employment_type}
+            {storedJob.job_employment_type}
           </div>
         </div>
 
@@ -57,7 +57,7 @@ function JobOffer({ jobInfo }) {
             Offer Salary
           </div>
           <div className=" font-robotoMedium text-md text-textColor">
-            {jobInfo.job_max_salary && jobInfo.job_min_salary ? (
+            {storedJob.job_max_salary && storedJob.job_min_salary ? (
               formatSalary()
             ) : (
               <div>TBD</div>
