@@ -64,7 +64,7 @@ function Input() {
       // for the display of job on pageload
       const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
       const savedJob = localStorage.getItem("savedJob");
-      console.log("the else for localstarage is working");
+
       const lastFetchTime = localStorage.getItem("lastFetchTime");
 
       if (savedJob && lastFetchTime && Date.now() - lastFetchTime < oneDay) {
