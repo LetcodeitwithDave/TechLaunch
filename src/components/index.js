@@ -6,6 +6,7 @@ import Dropdown from "./Dropdown.jsx";
 import CompanyFilter from "./CompanyFilter.jsx";
 import Filter from "./Filter.jsx";
 import ProfileCard from "./ProfileCard.jsx";
+import Loader from './Loader.jsx'
 export {
     Nav,
     Input,
@@ -15,4 +16,5 @@ export {
     CompanyFilter,
     Filter,
     ProfileCard,
+    Loader,
 }
