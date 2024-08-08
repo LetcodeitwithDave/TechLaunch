@@ -3,7 +3,7 @@ import { InputContext } from "../authcontext/inputContext";
 import { nocompanyimage } from "../assets/images";
 import { useNavigate } from "react-router-dom";
 import { JobContext } from "../authcontext/JobDetailContext";
-
+import Loader from "./Loader";
 function JobCard() {
   const navigate = useNavigate();
   const { userData, jobDetailsOpen, setJobDetailsOpen, isLoading } =
@@ -35,6 +35,7 @@ function JobCard() {
 
   const jobFunction = (index) => {
     setJobInfo(userData[index]);
+    localStorage.setItem("jobInfo", JSON.stringify(userData[index]));
     console.log("this is job info -> ", jobInfo);
     setJobDetailsOpen(!jobDetailsOpen);
     navigate(`/jobpage/${userData[index].job_id}`);
@@ -59,9 +60,7 @@ function JobCard() {
   return (
     <div className="">
       {isLoading ? (
-        <div className="fixed inset-0 flex items-center justify-center">
-          <div className="loader"></div>
-        </div>
+        <Loader />
       ) : (
         userData.length > 0 &&
         userData.map((job, index) => (
