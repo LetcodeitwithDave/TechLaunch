@@ -25,14 +25,14 @@ function JobOffer({ storedJob }) {
     }
   };
   return (
-    <div className=" bg-test  mt-8 rounded-lg ">
-      <div className=" flex-row justify-around p-6  flex gap-4">
+    <div className=" bg-test   mt-8 rounded-lg ">
+      <div className=" flex-row justify-between sm:justify-around p-6 flex gap-4">
         {/* work experoince  */}
         <div className=" flex flex-col  gap-2">
           <div className="  font-robotoRegular text-sm text-gray-500">
             Experience
           </div>
-          <div className=" font-robotoMedium text-md text-textColor">
+          <div className=" font-robotoRegular text-md text-textColor">
             {(storedJob.job_required_experience &&
               yearsOfExperince(
                 storedJob.job_required_experience.required_experience_in_months
@@ -46,7 +46,7 @@ function JobOffer({ storedJob }) {
           <div className=" font-robotoRegular text-sm text-gray-500">
             Employment Type
           </div>
-          <div className=" font-robotoMedium text-md text-textColor">
+          <div className=" font-robotoRegular text-md text-textColor">
             {storedJob.job_employment_type}
           </div>
         </div>
@@ -56,7 +56,7 @@ function JobOffer({ storedJob }) {
           <div className=" font-robotoRegular text-sm text-gray-500">
             Offer Salary
           </div>
-          <div className=" font-robotoMedium text-md text-textColor">
+          <div className=" font-robotoRegular text-md text-textColor">
             {storedJob.job_max_salary && storedJob.job_min_salary ? (
               formatSalary()
             ) : (
