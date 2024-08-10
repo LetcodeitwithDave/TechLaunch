@@ -74,7 +74,7 @@ function JobDetailsPage() {
                         </div>
                       </div>
 
-                      <button className="transition duration-300 hover:bg-blue-600 px-4 py-2 rounded-md mt-4 bg-buttonBackground text-white font-robotoMedium">
+                      <button className="transition md:block hidden duration-300 hover:bg-blue-600 md:px-4 md:py-2 rounded-md mt-4 bg-buttonBackground text-white font-robotoMedium">
                         <a
                           href={storedJob.apply_options[0]?.apply_link || "#"}
                           target="_blank"
@@ -87,6 +87,16 @@ function JobDetailsPage() {
                     <div>
                       <JobOffer storedJob={storedJob} />
                     </div>
+
+                    <button className="transition md:hidden w-full  duration-300 hover:bg-blue-600 px-4 py-2 rounded-md mt-4 bg-buttonBackground text-white font-robotoMedium">
+                      <a
+                        href={storedJob.apply_options[0]?.apply_link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Apply Now
+                      </a>
+                    </button>
 
                     <div className="mt-10">
                       <div className="font-robotoMedium text-textColor text-xl">
